@@ -62,7 +62,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The ap
 
 ### Netlify Edge Functions
 
-All the functions used in this project can be found `netlify/functions` directory
+All the functions used in this project can be found in `netlify/functions` directory
 To learn more, check out this [Blog Post From Netlify](https://www.netlify.com/blog/2021/12/11/serverless-functions-made-simple-just-add-files/)
 
 
