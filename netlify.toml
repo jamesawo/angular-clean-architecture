@@ -1,0 +1,13 @@
+# netlify toml configuration
+[build]
+base = "./"
+publish = "./dist/angular-clean-architecture-serverless"
+command = "ng build"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+[functions]
+directory = "./netlify/functions"
