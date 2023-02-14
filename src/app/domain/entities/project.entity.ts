@@ -3,7 +3,7 @@ export type ProjectAction = {
     link: string;
 }
 
-export class Project {
+export class ProjectEntity {
     id?: string;
     title!: string;
     description!: string;

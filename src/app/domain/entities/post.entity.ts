@@ -1,4 +1,4 @@
-export class Post {
+export class PostEntity {
     id?: string;
     tags?: string[];
     content!: string;
