@@ -1,7 +1,8 @@
 export class Param<T> {
-    model: T;
 
-    constructor(model: T) {
-        this.model = model;
+    payload: T;
+
+    constructor(payload: T) {
+        this.payload = payload;
     }
 }
