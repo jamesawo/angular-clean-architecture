@@ -1,15 +1,15 @@
 import { Observable } from 'rxjs';
-import { Post } from './../entities/';
+import { PostEntity } from './../entities/';
 
 export interface IPostRepository {
 
     all(): Observable<void>;
 
-    createPost(post: Post): Observable<void>;
+    createPost(post: PostEntity): Observable<void>;
 
     getPost(id: string): Observable<void>;
 
-    updatePost(id: string, post: Post): Observable<void>;
+    updatePost(id: string, post: PostEntity): Observable<void>;
 
     removePost(id: string): Observable<void>;
 
