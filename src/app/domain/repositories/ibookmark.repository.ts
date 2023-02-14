@@ -1,16 +1,19 @@
+import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
-import { Bookmark } from "../entities";
+import { Result } from 'src/app/core/types/types';
+import { BookmarkEntity } from "../entities";
 
-export interface IBookmarkRepository {
+@Injectable()
+export abstract class IBookmarkRepository {
 
-    all(): Observable<void>;
+    abstract all(): Observable<BookmarkEntity[]>;
 
-    createBookmark(bookmark: Bookmark): Observable<void>;
+    abstract createBookmark(bookmark: BookmarkEntity): Observable<Result>;
 
-    getBookmark(id: string): Observable<Bookmark>;
+    abstract getBookmark(id: string): Observable<BookmarkEntity>;
 
-    updateBookmark(id: string, bookmark: Bookmark): Observable<void>;
+    abstract updateBookmark(id: string, bookmark: BookmarkEntity): Observable<Result>;
 
-    removeBookmark(id: string): Observable<void>;
+    abstract removeBookmark(id: string): Observable<Result>;
 
 }
