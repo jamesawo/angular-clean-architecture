@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+body.dark .prose h1,
+body.dark .prose h2,
+body.dark .prose h3,
+body.dark .prose h4,
+body.dark .prose blockquote>p,
+body.dark .prose p>strong,
+body.dark .prose p>a,
+body.dark .prose {
+    color: white;
+}
