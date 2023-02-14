@@ -1,7 +1,7 @@
-export interface Mapper<Type, Param> {
+export abstract class Mapper<E, R> {
 
-    toEntity(param: Param): Type;
+    protected abstract toEntity(param: R): E;
 
-    toRequest(type: Type): Param;
+    protected abstract toRequest(param: E): R;
 
 }
