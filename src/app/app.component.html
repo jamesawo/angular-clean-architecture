@@ -1,1 +1,20 @@
-<router-outlet></router-outlet>
+<body class="h-screen" [ngClass]="isDarkTheme == true ? 'dark' : ''">
+
+    <app-toast></app-toast>
+
+    <section class="bg-white dark:bg-black min-h-screen">
+        <section class="flex flex-col gap-0 xl:mx-80 lg:mx-60 md:mx-52 sm:mx-40">
+
+            <div class="pl-20">
+
+                <app-header></app-header>
+
+                <router-outlet></router-outlet>
+
+                <div class="relative mt-40">
+                    <app-footer></app-footer>
+                </div>
+            </div>
+        </section>
+    </section>
+</body>
