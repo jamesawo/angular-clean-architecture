@@ -12,5 +12,5 @@ export interface IBookmarkInteractor {
 
     update(bookmark: BookmarkRequest): Observable<Result>;
 
-    delete(slug: string): Observable<void>;
+    delete(slug: string): Observable<Result>;
 }

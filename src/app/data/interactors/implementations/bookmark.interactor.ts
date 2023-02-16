@@ -44,7 +44,7 @@ export class BookmarkInteractor implements IBookmarkInteractor {
         return this.updateBookmarkUsecase.execute(new Param(bookmark));
     }
 
-    public delete(slug: string): Observable<void> {
+    public delete(slug: string): Observable<Result> {
         return this.removeBookmarkUsecase.execute(new Param(slug));
     }
 
