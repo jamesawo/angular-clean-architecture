@@ -1,7 +1,13 @@
+import { EditorComponent } from './editor.component';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-    declarations: [],
-    providers: []
+    declarations: [
+        EditorComponent
+    ],
+    providers: [],
+    exports: [
+        EditorComponent
+    ]
 })
 export class EditorModule { }
