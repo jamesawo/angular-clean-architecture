@@ -1,1 +1,22 @@
-<p>blog works!</p>
+<section id="intro" class="mt-32">
+    <div class="flex flex-col gap-1 text-black dark:text-white">
+        <h1 class="text-4xl font-bold ">Blog</h1>
+        <p class="text-justify  text-base">
+            Welcome to my blog section.
+        </p>
+        <p class="text-justify text-base"></p>
+    </div>
+</section>
+
+<section id="post" class="text-black dark:text-white">
+    <!-- ends here -->
+    <div class="mt-12">
+        <!-- <ng-container *ngIf="posts$ | async as posts; else loading"> -->
+        <!-- <app-post [post]="item" *ngFor="let item of posts"></app-post> -->
+        <!-- </ng-container> -->
+    </div>
+</section>
+
+<ng-template #loading>
+    <app-skeleton-loader [pageEnum]="blog"></app-skeleton-loader>
+</ng-template>

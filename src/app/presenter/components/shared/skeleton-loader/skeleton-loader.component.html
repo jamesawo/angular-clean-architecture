@@ -1,0 +1,19 @@
+<div [ngSwitch]="pageEnum">
+
+    <div *ngSwitchCase="blog">
+        <app-blog-skeleton></app-blog-skeleton>
+    </div>
+
+    <div *ngSwitchCase="project">
+        <app-projects-skeleton></app-projects-skeleton>
+    </div>
+
+    <div *ngSwitchCase="bookmark">
+        <app-bookmarks-skeleton></app-bookmarks-skeleton>
+    </div>
+
+    <div *ngSwitchDefault>
+        <div class="h-3.5 bg-gray-200 rounded-full dark:bg-gray-700 sm:w-40 md:w-[35rem] mb-4"></div>
+        <div class="h-3.5 bg-gray-200 rounded-full dark:bg-gray-700 sm:w-40 md:w-[35rem] mb-4"></div>
+    </div>
+</div>

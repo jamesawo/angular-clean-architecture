@@ -5,6 +5,7 @@ import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { BlogComponent } from './blog/blog.component';
 import { NgModule } from '@angular/core';
 import { ProjectsComponent } from './projects/projects.component';
+import { ComponentModule } from "../components/components.module";
 
 
 @NgModule({
@@ -15,9 +16,10 @@ import { ProjectsComponent } from './projects/projects.component';
         PostComponent,
         ProjectsComponent,
     ],
+    exports: [],
     imports: [
-        EditorModule
-    ],
-    exports: []
+        EditorModule,
+        ComponentModule
+    ]
 })
 export class PagesModule { }
