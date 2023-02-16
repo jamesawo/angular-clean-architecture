@@ -1,4 +1,10 @@
 import { NgModule } from '@angular/core';
+import { BookmarkInteractor } from './interactors/implementations/bookmark.interactor';
 
-@NgModule()
+@NgModule({
+    providers: [
+        BookmarkInteractor
+    ],
+    exports: []
+})
 export class DataModule { }
