@@ -7,7 +7,7 @@ import { EditorComponent } from './presenter/pages/editor/editor.component';
 import { HomeComponent } from './presenter/pages/home/home.component';
 import { PostComponent } from './presenter/pages/post/post.component';
 import { ProjectsComponent } from './presenter/pages/projects/projects.component';
-import { NotFoundComponent } from './presenter/components/not-found/not-found.component';
+import { NotFoundComponent } from './presenter/components/shared/not-found/not-found.component';
 
 
 const routes: Routes = [

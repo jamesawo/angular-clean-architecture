@@ -1,4 +1,4 @@
-import { NotFoundComponent } from './../../components/not-found/not-found.component';
+import { NotFoundComponent } from '../../components/shared/not-found/not-found.component';
 import { EditorBookmarksComponent } from './pages/editor-bookmarks/editor-bookmarks.component';
 import { EditorProjectsComponent } from './pages/editor-projects/editor-projects.component';
 import { EditorPostsComponent } from './pages/editor-posts/editor-posts.component';
