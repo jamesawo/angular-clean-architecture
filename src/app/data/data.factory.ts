@@ -1,3 +1,9 @@
+import { HttpClient } from '@angular/common/http';
+import { GetOneProjectUsecase } from './../domain/usecases/projects-usecases/get-one-project.usecase';
+import { RemoveProjectUsecase } from './../domain/usecases/projects-usecases/remove-project.usecase';
+import { UpdateProjectUsecase } from './../domain/usecases/projects-usecases/update-project.usecase';
+import { CreateProjectUsecase } from './../domain/usecases/projects-usecases/create-project.usecase';
+import { ProjectRepository } from './datasources/remote/repo-implementations/project.repository';
 import { GetManyPostUsecase } from './../domain/usecases/posts-usecases/get-many-posts.usecase';
 import { GetOnePostUsecase } from './../domain/usecases/posts-usecases/get-one-post.usecase';
 import { RemovePostUsecase } from './../domain/usecases/posts-usecases/remove-post.usecase';
@@ -8,10 +14,8 @@ import { UpdateBookmarkUsecase } from './../domain/usecases/bookmark-usecases/up
 import { RemoveBookmarkUsecase } from './../domain/usecases/bookmark-usecases/remove-bookmark.usecase';
 import { GetOneBookmarkUsecase } from './../domain/usecases/bookmark-usecases/get-one-bookmark.usecase';
 import { GetManyBookmarksUsecase } from './../domain/usecases/bookmark-usecases/get-many-bookmarks.usecase';
-import { HttpClient } from '@angular/common/http';
-
-import { CreateBookmarkUsecase } from "../domain/usecases/bookmark-usecases/create-bookmark.usecase";
 import { BookmarkRepository } from "./datasources/remote/repo-implementations/bookmark.repository";
+import { CreateBookmarkUsecase } from "../domain/usecases/bookmark-usecases/create-bookmark.usecase";
 
 export class DataBookmarkFactory {
 
@@ -42,25 +46,31 @@ export class DataBookmarkFactory {
 }
 
 export class DataProjectFactory {
+
     public getRepository(http: HttpClient) {
-        return null;
+        return new ProjectRepository(http);
     }
 
-    public getCreatePostUsecase(repo: PostRepository) {
-        return null;
+    public getCreateProjectUsecase(repo: ProjectRepository) {
+        return new CreateProjectUsecase(repo);
     }
 
-    public getUpdatePostUsecase(repo: PostRepository) {
-        return null;
+    public getUpdateProjectUsecase(repo: ProjectRepository) {
+        return new UpdateProjectUsecase(repo);
     }
 
-    public getRemovePostUsecase(repo: PostRepository) {
-        return null;
+    public getRemoveProjectUsecase(repo: ProjectRepository) {
+        return new RemoveProjectUsecase(repo);
     }
 
-    public getGetOnePostUsecase(repo: PostRepository) {
-        return null;
+    public getGetOneProjectUsecase(repo: ProjectRepository) {
+        return new GetOneProjectUsecase(repo);
     }
+
+    public getGetManyProjectUsecase(repo: ProjectRepository) {
+        return new GetOneProjectUsecase(repo);
+    }
+
 }
 
 export class DataPostFactory {

@@ -11,6 +11,7 @@ import { ComponentModule } from "../components/components.module";
 import { BookmarkComponent } from './bookmarks/bookmark/bookmark.component';
 import { CommonModule } from '@angular/common';
 import { PostComponent } from './blog/post/post.component';
+import { ProjectComponent } from './projects/project/project.component';
 
 
 @NgModule({
@@ -22,12 +23,14 @@ import { PostComponent } from './blog/post/post.component';
         ProjectsComponent,
         BookmarkComponent,
         PostDetailComponent,
+        ProjectComponent,
     ],
     exports: [
         CommonModule,
         ComponentModule,
         PostComponent,
-        BlogComponent
+        BlogComponent,
+        ProjectComponent
     ],
     imports: [
         RouterModule,

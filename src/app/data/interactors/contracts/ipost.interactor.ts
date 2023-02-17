@@ -13,9 +13,9 @@ export abstract class IPostInteractor {
 
     abstract getOne(slug: string): Observable<PostRequest>
 
-    abstract create(bookmark: PostRequest): Observable<PostRequest>;
+    abstract create(post: PostRequest): Observable<PostRequest>;
 
-    abstract update(bookmark: PostRequest): Observable<Result>;
+    abstract update(post: PostRequest): Observable<Result>;
 
     abstract delete(slug: string): Observable<Result>;
 }

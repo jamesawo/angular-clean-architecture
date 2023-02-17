@@ -1,1 +1,28 @@
-<p>projects works!</p>
+<section id="intro" class="relative mt-32">
+    <div class="flex flex-col gap-5 text-dark dark:text-white">
+        <h1 class="text-4xl font-bold ">Projects</h1>
+        <p class="text-justify text-base">
+            I enjoy creating beautiful and reliable applications for multiple platforms.
+            My goal is to build scalable products and performant experiences constantly.
+        </p>
+
+        <p class="text-justify text-base">
+            I derive joy in working on projects that solve specific business requirements or help people solve
+            everyday problems.
+        </p>
+
+        <p class="text-justify text-base">
+            My projects range from web, desktop, and mobile apps.
+        </p>
+    </div>
+</section>
+
+<ng-container *ngIf="projects$ | async as projects; else loading">
+    <app-project [project]="project" *ngFor="let project of projects"></app-project>
+</ng-container>
+
+<ng-template #loading>
+    <div class="mt-10">
+        <app-skeleton-loader [pageEnum]="page"></app-skeleton-loader>
+    </div>
+</ng-template>
