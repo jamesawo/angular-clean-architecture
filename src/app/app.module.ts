@@ -8,6 +8,8 @@ import { MarkdownModule } from 'ngx-markdown';
 import { AppRoutingModule } from './app-routing.module';
 import { PresenterModule } from './presenter/presenter.module';
 import { AppComponent } from './app.component';
+import { DATA_BOOKMARK_IOC, DATA_POST_IOC, DATA_PROJECT_IOC } from './data/data.ioc';
+
 
 @NgModule({
     declarations: [
@@ -23,8 +25,13 @@ import { AppComponent } from './app.component';
         AppRoutingModule,
         PresenterModule,
     ],
-    providers: [],
+    providers: [
+        ...DATA_BOOKMARK_IOC,
+        ...DATA_PROJECT_IOC,
+        ...DATA_POST_IOC
+    ],
     bootstrap: [AppComponent],
     exports: []
 })
-export class AppModule { }
+export class AppModule {
+}
