@@ -40,6 +40,7 @@ import { LightThemeSwitchComponent } from './shared/theme-switcher/light-theme-s
         LightThemeSwitchComponent,
         DarkThemeSwitchComponent,
         ThemeSwitcherComponent,
+        RouterModule
     ],
     imports: [
         RouterModule,

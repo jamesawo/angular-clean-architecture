@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,6 +21,7 @@ import { DATA_BOOKMARK_IOC, DATA_POST_IOC, DATA_PROJECT_IOC } from './data/data.
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        RouterModule,
         MarkdownModule.forRoot(),
         AppRoutingModule,
         PresenterModule,

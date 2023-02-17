@@ -1,3 +1,4 @@
+import { Router, RouterModule } from '@angular/router';
 import { PostComponent } from './post/post.component';
 import { HomeComponent } from './home/home.component';
 import { EditorModule } from './editor/editor.module';
@@ -6,6 +7,7 @@ import { BlogComponent } from './blog/blog.component';
 import { NgModule } from '@angular/core';
 import { ProjectsComponent } from './projects/projects.component';
 import { ComponentModule } from "../components/components.module";
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -18,8 +20,8 @@ import { ComponentModule } from "../components/components.module";
     ],
     exports: [],
     imports: [
+        ComponentModule,
         EditorModule,
-        ComponentModule
     ]
 })
 export class PagesModule { }

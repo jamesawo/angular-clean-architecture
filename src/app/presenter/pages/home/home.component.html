@@ -16,9 +16,27 @@
         <div class="flex flex-col">
             <p class="font-normal font-mono ">Welcome to my space on the web</p>
             <ul class="list-disc list-inside mt-1">
-                <li><a routerLink="/blog" class="hover:text-pink-600 font-mono cursor-pointer">blog</a></li>
-                <li><a routerLink="/projects" class="hover:text-pink-600 font-mono cursor-pointer">projects</a></li>
-                <li><a routerLink="/bookmarks" class="hover:text-pink-600 font-mono cursor-pointer">bookmarks</a></li>
+                <li>
+                    <a routerLink="/blog"
+                        class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500 "
+                        ariaCurrentWhenActive="page" routerLinkActive="" [routerLinkActiveOptions]="{exact: true}">
+                        blog
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="/projects"
+                        class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500 "
+                        ariaCurrentWhenActive="page" routerLinkActive="" [routerLinkActiveOptions]="{exact: true}">
+                        projects
+                    </a>
+                <li>
+                    <a routerLink="/bookmarks"
+                        class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500 "
+                        ariaCurrentWhenActive="page" routerLinkActive="" [routerLinkActiveOptions]="{exact: true}">
+                        bookmarks
+                    </a>
+                </li>
             </ul>
         </div>
 
