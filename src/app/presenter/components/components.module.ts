@@ -14,6 +14,7 @@ import { BookmarksSkeletonComponent } from './shared/skeleton-loader/bookmarks-s
 import { BrowserModule } from '@angular/platform-browser';
 import { ThemeSwitcherComponent } from './shared/theme-switcher/theme-switcher.component';
 import { LightThemeSwitchComponent } from './shared/theme-switcher/light-theme-switch/light-theme-switch.component';
+import { TagComponent } from './shared/tag/tag.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { LightThemeSwitchComponent } from './shared/theme-switcher/light-theme-s
         LightThemeSwitchComponent,
         DarkThemeSwitchComponent,
         ThemeSwitcherComponent,
+        TagComponent,
 
     ],
     exports: [
@@ -40,6 +42,7 @@ import { LightThemeSwitchComponent } from './shared/theme-switcher/light-theme-s
         LightThemeSwitchComponent,
         DarkThemeSwitchComponent,
         ThemeSwitcherComponent,
+        TagComponent,
         RouterModule
     ],
     imports: [
