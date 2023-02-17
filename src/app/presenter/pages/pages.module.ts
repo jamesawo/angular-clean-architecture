@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { ProjectsComponent } from './projects/projects.component';
 import { ComponentModule } from "../components/components.module";
 import { BrowserModule } from '@angular/platform-browser';
+import { BookmarkComponent } from './bookmarks/bookmark/bookmark.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { BrowserModule } from '@angular/platform-browser';
         HomeComponent,
         PostComponent,
         ProjectsComponent,
+        BookmarkComponent,
     ],
     exports: [],
     imports: [
