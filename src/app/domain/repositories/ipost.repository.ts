@@ -1,16 +1,18 @@
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PostEntity } from './../entities/';
 
-export interface IPostRepository {
+@Injectable({ providedIn: 'root' })
+export abstract class IPostRepository {
 
-    all(): Observable<void>;
+    abstract all(): Observable<void>;
 
-    createPost(post: PostEntity): Observable<void>;
+    abstract createPost(post: PostEntity): Observable<void>;
 
-    getPost(id: string): Observable<void>;
+    abstract getPost(id: string): Observable<void>;
 
-    updatePost(id: string, post: PostEntity): Observable<void>;
+    abstract updatePost(id: string, post: PostEntity): Observable<void>;
 
-    removePost(id: string): Observable<void>;
+    abstract removePost(id: string): Observable<void>;
 
 }

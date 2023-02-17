@@ -5,7 +5,7 @@ import { Result } from 'src/app/core/types/types';
 import { IBookmarkRepository } from '../../repositories/ibookmark.repository';
 import { Usecase } from './../../../core/contracts/usecase.contract';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class RemoveBookmarkUsecase implements Usecase<Param<string>, Observable<Result>> {
 
     constructor(private ibookmarkRepository: IBookmarkRepository) { }

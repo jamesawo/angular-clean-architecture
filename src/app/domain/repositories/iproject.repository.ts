@@ -1,17 +1,18 @@
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProjectEntity } from '../entities';
 
+@Injectable({ providedIn: 'root' })
+export abstract class IProjectRepository {
 
-export interface IProjectRepository {
+    abstract all(): Observable<void>;
 
-    all(): Observable<void>;
+    abstract createProject(project: ProjectEntity): Observable<void>;
 
-    createProject(project: ProjectEntity): Observable<void>;
+    abstract getProject(id: string): Observable<void>;
 
-    getProject(id: string): Observable<void>;
+    abstract updateProject(id: string, project: ProjectEntity): Observable<void>;
 
-    updateProject(id: string, project: ProjectEntity): Observable<void>;
-
-    removeProject(id: string): Observable<void>;
+    abstract removeProject(id: string): Observable<void>;
 
 }

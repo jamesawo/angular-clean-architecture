@@ -7,7 +7,7 @@ import { IBookmarkRepository } from '../../repositories/ibookmark.repository';
 import { Result } from 'src/app/core/types/types';
 
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class CreateBookmarkUsecase implements Usecase<Param<BookmarkEntity>, Observable<Result>> {
 
     constructor(private ibookmarkRepository: IBookmarkRepository) { }

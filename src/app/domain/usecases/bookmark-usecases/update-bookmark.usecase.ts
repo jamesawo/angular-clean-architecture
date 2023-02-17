@@ -8,7 +8,7 @@ import { Usecase } from './../../../core/contracts/usecase.contract';
 import { IBookmarkRepository } from '../../repositories/ibookmark.repository';
 
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class UpdateBookmarkUsecase implements Usecase<Param<BookmarkEntity>, Observable<Result>>{
 
     constructor(private ibookmarkRepository: IBookmarkRepository) { }

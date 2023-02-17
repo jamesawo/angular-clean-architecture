@@ -5,7 +5,7 @@ import { Usecase } from './../../../core/contracts/usecase.contract';
 import { IBookmarkRepository } from '../../repositories/ibookmark.repository';
 import { BookmarkEntity } from '../../entities';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class GetManyBookmarksUsecase implements Usecase<NoParam, Observable<BookmarkEntity[]>> {
 
     constructor(private iBookmarkRepository: IBookmarkRepository) { }

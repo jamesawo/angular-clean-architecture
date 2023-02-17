@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { Result } from 'src/app/core/types/types';
 import { BookmarkEntity } from "../entities";
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export abstract class IBookmarkRepository {
 
     abstract all(): Observable<BookmarkEntity[]>;
