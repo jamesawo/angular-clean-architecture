@@ -10,9 +10,9 @@
 
 <section id="post" class="text-black dark:text-white">
     <div class="mt-12">
-        <!-- <ng-container *ngIf="posts$ | async as posts; else loading"> -->
-        <!-- <app-post [post]="item" *ngFor="let item of posts"></app-post> -->
-        <!-- </ng-container> -->
+        <ng-container *ngIf="posts$ | async as posts; else loading">
+            <app-post [post]="item" *ngFor="let item of posts"></app-post>
+        </ng-container>
     </div>
 </section>
 
