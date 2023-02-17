@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { Result } from 'src/app/core/types/types';
 import { BookmarkEntity } from 'src/app/domain/entities';
 import { IBookmarkRepository } from 'src/app/domain/repositories/ibookmark.repository';
@@ -8,10 +8,14 @@ import { IBookmarkRepository } from 'src/app/domain/repositories/ibookmark.repos
 @Injectable({ providedIn: 'root' })
 export class BookmarkRepository implements IBookmarkRepository {
 
-    constructor(private httpClient: HttpClient) { }
+    public baseUrl = window.location.origin + '/.netlify/functions/bookmarks';
+
+    constructor(private http: HttpClient) { }
 
     public all(): Observable<BookmarkEntity[]> {
-        return of();
+        return this.http
+            .get<{ data: BookmarkEntity[] }>(`${this.baseUrl}`)
+            .pipe(map(x => x.data));
     }
 
     public createBookmark(bookmark: BookmarkEntity): Observable<Result> {
@@ -29,4 +33,5 @@ export class BookmarkRepository implements IBookmarkRepository {
     public removeBookmark(id: string): Observable<Result> {
         return of();
     }
+
 }

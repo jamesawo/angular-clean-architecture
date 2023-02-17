@@ -23,7 +23,7 @@ export const DATA_BOOKMARK_IOC: Provider[] = [
     {
         deps: [BookmarkRepository],
         provide: GetManyBookmarksUsecase,
-        useFactory: (repository: BookmarkRepository) => dataFactory.getCreateBookmarkUsecase(repository),
+        useFactory: (repository: BookmarkRepository) => dataFactory.getManyBookmarkUsecase(repository),
     },
 ];
 

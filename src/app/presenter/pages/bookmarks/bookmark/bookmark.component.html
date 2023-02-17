@@ -1,1 +1,21 @@
-<p>bookmark works!</p>
+<section class="mt-12 flex flex-col gap-16">
+    <div class="flex flex-col gap-3">
+        <a [href]="bookmark?.url" target="_blank" class="hover:cursor-pointer">
+            <h3 class="text-dark dark:text-white font-bold hover:underline" [innerText]="bookmark?.short"></h3>
+        </a>
+
+        <a [href]="bookmark?.url" target="_blank"
+            class="text-dark dark:text-white text-sm hover:underline hover:cursor-pointer"
+            [innerText]="bookmark?.url??''"></a>
+
+        <div class="flex flex-col align-middle items-center justify-items-center justify-between w-2/3 sm:flex-row ">
+            <div class="flex flex-row gap-2">
+                <app-tag *ngFor="let tag of bookmark?.tags" [text]="tag"></app-tag>
+            </div>
+
+            <span class="text-gray-500 dark:text-slate-300  text-sm mt-3 sm:mt-0 sm:ml-3">
+                Saved on {{bookmark?.date | date}}
+            </span>
+        </div>
+    </div>
+</section>

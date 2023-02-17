@@ -9,6 +9,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ComponentModule } from "../components/components.module";
 import { BrowserModule } from '@angular/platform-browser';
 import { BookmarkComponent } from './bookmarks/bookmark/bookmark.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -20,8 +21,11 @@ import { BookmarkComponent } from './bookmarks/bookmark/bookmark.component';
         ProjectsComponent,
         BookmarkComponent,
     ],
-    exports: [],
+    exports: [
+        CommonModule,
+    ],
     imports: [
+        CommonModule,
         ComponentModule,
         EditorModule,
     ]

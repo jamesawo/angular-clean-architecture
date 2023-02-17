@@ -1,1 +1,32 @@
-<p>bookmarks works!</p>
+<section id="intro" class="relative  mt-32">
+    <div class="flex flex-col gap-3 text-dark dark:text-white">
+        <h1 class="text-4xl font-bold ">Bookmarks</h1>
+
+        <p class="text-justify  text-base">
+            My favorite place for keeping some useful, interesting, and fun web hyperlinks.
+        </p>
+
+        <div class="flex flex-col gap-1">
+            <p class="text-justify text-lg font-bold mt-5">
+                Popular Tags
+            </p>
+
+            <div class="flex flex-row flex-wrap gap-2">
+                <app-tag text="web"></app-tag>
+                <app-tag text="design patterns"></app-tag>
+                <app-tag text="tech news"></app-tag>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<ng-container *ngIf="bookmarks$ | async as bookmarks; else loading">
+    <app-bookmark [bookmark]="bookmark" *ngFor="let bookmark of bookmarks"></app-bookmark>
+</ng-container>
+
+<ng-template #loading>
+    <div class="mt-20">
+        <app-skeleton-loader [pageEnum]="bookmarkPage"></app-skeleton-loader>
+    </div>
+</ng-template>
