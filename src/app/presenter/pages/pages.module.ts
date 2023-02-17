@@ -1,3 +1,4 @@
+import { MarkdownModule } from 'ngx-markdown';
 import { RouterModule } from '@angular/router';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { HomeComponent } from './home/home.component';
@@ -33,6 +34,7 @@ import { PostComponent } from './blog/post/post.component';
         CommonModule,
         ComponentModule,
         EditorModule,
+        MarkdownModule.forChild()
     ]
 })
 export class PagesModule { }

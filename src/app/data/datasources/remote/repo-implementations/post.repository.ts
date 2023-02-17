@@ -25,7 +25,9 @@ export class PostRepository implements IPostRepository {
     }
 
     getPost(id: string): Observable<PostEntity> {
-        return of();
+        return this.http
+            .get<{ data: PostEntity }>(`${this.baseUrl}?id=${id}`)
+            .pipe(map(x => x.data));
     }
 
     updatePost(id: string, post: PostEntity): Observable<Result> {

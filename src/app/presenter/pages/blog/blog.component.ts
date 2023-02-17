@@ -1,4 +1,3 @@
-import { PostInteractor } from './../../../data/interactors/implementations/post.interactor';
 import { PageSeoService } from './../page-seo.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -25,6 +24,5 @@ export class BlogComponent implements OnInit {
         this.seoService.setSEO({ pageTitle: 'Blog Posts' });
         this.posts$ = this.interactor.getMany();
     }
-
 
 }

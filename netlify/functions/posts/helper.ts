@@ -28,7 +28,18 @@ const getAll = async (event: HandlerEvent) => {
 // get one post record
 const getOne = async (event: HandlerEvent) => {
     const id = event.queryStringParameters.id;
-    return;
+
+    const client = new MongoClient(process.env['MONGODB_URL']);
+    try {
+        await client.connect();
+        const db = client.db(process.env['MONGODB_NAME']);
+        return await db.collection('posts').findOne({ "_id": new ObjectId(id) });
+    } catch (err) {
+        console.log(err);
+        throw new Error(`${err.message}`);
+    } finally {
+        await client.close();
+    }
 }
 
 // create new post record

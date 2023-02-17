@@ -1,1 +1,25 @@
-<p>post works!</p>
+<ng-container *ngIf="post$ | async as post">
+    {{setSeo(post)}}
+    <div class="min-h-screen bg-primary w-full pt-10">
+        <div class="mt-10 mb-10 max-w-4xl mx-auto">
+            <h1 class="text-5xl font-semibold text-black dark:text-white">
+                {{post?.title}}
+            </h1>
+
+            <p class="text-base text-black dark:text-white mt-5">
+                {{ post?.date | date}}
+            </p>
+        </div>
+
+        <div class="all-revert sm:p-0 w-full sm:max-w-4xl mx-auto text-black dark:text-white">
+            <article class="prose">
+                <markdown class="text-black dark:text-white" [data]="post?.content"></markdown>
+            </article>
+        </div>
+        <div class="h-28"> </div>
+    </div>
+</ng-container>
+
+<ng-template #notFound>
+    <app-not-found></app-not-found>
+</ng-template>
