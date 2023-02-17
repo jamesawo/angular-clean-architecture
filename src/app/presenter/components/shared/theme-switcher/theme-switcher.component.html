@@ -1,0 +1,10 @@
+<div class="flex items-center  ml-6 pl-6 dark:border-slate-800" (click)="toggleTheme()">
+    <label class="sr-only">Theme</label>
+    <ng-container *ngIf="isDarkTheme; else lightTheme">
+        <app-light-switch></app-light-switch>
+    </ng-container>
+
+    <ng-template #lightTheme>
+        <app-dark-switch></app-dark-switch>
+    </ng-template>
+</div>

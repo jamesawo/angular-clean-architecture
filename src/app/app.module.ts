@@ -10,7 +10,6 @@ import { PresenterModule } from './presenter/presenter.module';
 import { AppComponent } from './app.component';
 import { DATA_BOOKMARK_IOC, DATA_POST_IOC, DATA_PROJECT_IOC } from './data/data.ioc';
 
-
 @NgModule({
     declarations: [
         AppComponent,

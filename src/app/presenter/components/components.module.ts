@@ -1,3 +1,5 @@
+import { DarkThemeSwitchComponent } from './shared/theme-switcher/dark-theme-switch/dark-theme-switch.component';
+import { ThemeSwitcherService } from './shared/theme-switcher/theme-switcher.service';
 import { ToastService } from './shared/toast/toast.service';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -5,12 +7,13 @@ import { ToastComponent } from './shared/toast/toast.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
-import { ToggleSwitchComponent } from './shared/toggle-switch/toggle-switch.component';
 import { SkeletonLoaderComponent } from './shared/skeleton-loader/skeleton-loader.component';
 import { BlogSkeletonComponent } from './shared/skeleton-loader/blog-skeleton/blog-skeleton.component';
 import { ProjectsSkeletonComponent } from './shared/skeleton-loader/projects-skeleton/projects-skeleton.component';
 import { BookmarksSkeletonComponent } from './shared/skeleton-loader/bookmarks-skeleton/bookmarks-skeleton.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { ThemeSwitcherComponent } from './shared/theme-switcher/theme-switcher.component';
+import { LightThemeSwitchComponent } from './shared/theme-switcher/light-theme-switch/light-theme-switch.component';
 
 
 @NgModule({
@@ -18,25 +21,30 @@ import { BrowserModule } from '@angular/platform-browser';
         FooterComponent,
         NotFoundComponent,
         ToastComponent,
-        ToggleSwitchComponent,
         HeaderComponent,
         SkeletonLoaderComponent,
         BlogSkeletonComponent,
         ProjectsSkeletonComponent,
         BookmarksSkeletonComponent,
+        LightThemeSwitchComponent,
+        DarkThemeSwitchComponent,
+        ThemeSwitcherComponent,
+
     ],
     exports: [
         FooterComponent,
-        ToggleSwitchComponent,
         NotFoundComponent,
         ToastComponent,
         HeaderComponent,
-        SkeletonLoaderComponent
+        SkeletonLoaderComponent,
+        LightThemeSwitchComponent,
+        DarkThemeSwitchComponent,
+        ThemeSwitcherComponent,
     ],
     imports: [
         RouterModule,
         BrowserModule
     ],
-    providers: [ToastService]
+    providers: [ToastService, ThemeSwitcherService]
 })
 export class ComponentModule { }

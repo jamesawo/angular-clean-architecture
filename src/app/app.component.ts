@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { ThemeSwitcherService } from './presenter/components/shared/theme-switcher/theme-switcher.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
 })
 export class AppComponent {
-    public title = 'angular-clean-architecture-serverless';
-    public isDarkTheme?: boolean;
 
-    private sub: Subscription = new Subscription();
+    public themePref$ = this.themeService.pref$;
 
+    public constructor(private themeService: ThemeSwitcherService) { }
 
 }

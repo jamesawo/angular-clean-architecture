@@ -1,4 +1,4 @@
-<body class="h-screen" [ngClass]="isDarkTheme == true ? 'dark' : ''">
+<body class="h-screen" [ngClass]="themePref$ | async">
 
     <app-toast></app-toast>
 
