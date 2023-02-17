@@ -5,7 +5,7 @@ import { GetManyBookmarksUsecase } from './../domain/usecases/bookmark-usecases/
 import { HttpClient } from '@angular/common/http';
 
 import { CreateBookmarkUsecase } from "../domain/usecases/bookmark-usecases/create-bookmark.usecase";
-import { BookmarkRepository } from "./datasources/remote/repositories_implementation/bookmark.repository";
+import { BookmarkRepository } from "./datasources/remote/repo-implementations/bookmark.repository";
 
 export class DataBookmarkFactory {
 

@@ -3,7 +3,7 @@ import { DataBookmarkFactory } from './data.factory';
 import { Provider } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { CreateBookmarkUsecase } from "../domain/usecases/bookmark-usecases/create-bookmark.usecase";
-import { BookmarkRepository } from './datasources/remote/repositories_implementation/bookmark.repository';
+import { BookmarkRepository } from './datasources/remote/repo-implementations/bookmark.repository';
 
 const dataFactory: DataBookmarkFactory = new DataBookmarkFactory();
 
