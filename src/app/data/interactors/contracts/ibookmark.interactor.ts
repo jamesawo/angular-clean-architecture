@@ -1,16 +1,20 @@
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Result } from './../../../core/types/types';
 import { BookmarkRequest } from 'src/app/data/requests/bookmark.request';
+import { BookmarkInteractor } from '../implementations/bookmark.interactor';
 
-export interface IBookmarkInteractor {
 
-    getMany(): Observable<BookmarkRequest[]>;
+@Injectable({ providedIn: 'root', useClass: BookmarkInteractor }) // default implementation
+export abstract class IBookmarkInteractor {
 
-    getOne(slug: string): Observable<BookmarkRequest>
+    abstract getMany(): Observable<BookmarkRequest[]>;
 
-    create(bookmark: BookmarkRequest): Observable<BookmarkRequest>;
+    abstract getOne(slug: string): Observable<BookmarkRequest>
 
-    update(bookmark: BookmarkRequest): Observable<Result>;
+    abstract create(bookmark: BookmarkRequest): Observable<BookmarkRequest>;
 
-    delete(slug: string): Observable<Result>;
+    abstract update(bookmark: BookmarkRequest): Observable<Result>;
+
+    abstract delete(slug: string): Observable<Result>;
 }
