@@ -1,1 +1,22 @@
-<p>toast works!</p>
+<ng-container *ngIf="toastProps | async as toast">
+    <div class="relative z-10" *ngIf="toast.isOpen === true" [@inOutAnimation]>
+        <div class=" fixed flex flex-col justify-center top-10 right-10">
+            <div class="{{color(toast.type!)}} shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block mb-3"
+                role="alert" aria-live="assertive" aria-atomic="true">
+                <div
+                    class="{{color(toast.type!)}} flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-{{color(toast.type!)}}-400 rounded-t-lg">
+                    <p class="font-bold text-white flex items-center ">
+                        <!-- add icon here -->
+                        {{toast.title}}
+                    </p>
+                    <div class="flex items-center">
+                        <p class="text-white opacity-90 text-xs cursor-pointer" (click)="close()">close</p>
+                    </div>
+                </div>
+                <div class="{{color(toast.type!)}} p-3 rounded-b-lg break-words text-white">
+                    {{toast.message}}
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

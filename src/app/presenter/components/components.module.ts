@@ -1,3 +1,4 @@
+import { ToastService } from './shared/toast/toast.service';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ToastComponent } from './shared/toast/toast.component';
@@ -35,7 +36,7 @@ import { BrowserModule } from '@angular/platform-browser';
     imports: [
         RouterModule,
         BrowserModule
-
-    ]
+    ],
+    providers: [ToastService]
 })
 export class ComponentModule { }
