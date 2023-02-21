@@ -1,1 +1,35 @@
-<p>editor-header works!</p>
+<div class="w-60 h-max">
+    <div class="pt-4 pb-2 px-0">
+        <a routerLink="/editor" routerLinkActive="text-pink-600 dark:text-pink-600"
+            [routerLinkActiveOptions]="{exact: true}">
+            <div class="flex ">
+                <div class="grow ml-0">
+                    <p class="text-sm font-semibold text-black dark:text-white">Editor Panel</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <ul class="relative px-0s flex flex-row">
+        <li class="relative">
+            <a class="flex items-center text-sm py-1 pr-4 h-12 overflow-hidden text-black dark:text-white dark:hover:text-pink-600 text-ellipsis whitespace-nowrap rounded hover:text-pink-500  transition duration-300 ease-in-out"
+                routerLink="/editor/posts" routerLinkActive="text-pink-600 dark:text-pink-600"
+                [routerLinkActiveOptions]="{exact: true}">
+                <span>Posts</span>
+            </a>
+        </li>
+        <li class="relative">
+            <a class="flex items-center text-sm py-1 px-4 h-12 overflow-hidden text-black dark:text-white dark:hover:text-pink-600 text-ellipsis whitespace-nowrap rounded hover:text-pink-500  transition duration-300 ease-in-out"
+                routerLink="/editor/projects" routerLinkActive="text-pink-600 dark:text-pink-600"
+                [routerLinkActiveOptions]="{exact: true}">
+                <span>Projects</span>
+            </a>
+        </li>
+        <li class="relative">
+            <a class="flex items-center text-sm py-1 px-4 h-12 overflow-hidden text-black dark:text-white dark:hover:text-pink-600 text-ellipsis whitespace-nowrap rounded hover:text-pink-500  transition duration-300 ease-in-out"
+                routerLink="/editor/bookmarks" routerLinkActive="text-pink-600 dark:text-pink-600"
+                [routerLinkActiveOptions]="{exact: true}">
+                <span>Bookmarks</span>
+            </a>
+        </li>
+    </ul>
+</div>
