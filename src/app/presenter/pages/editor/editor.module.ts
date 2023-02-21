@@ -34,11 +34,9 @@ import { BookmarkFormComponent } from './components/bookmark-form/bookmark-form.
         RouterModule,
         ComponentModule,
         CommonModule,
-
-        // FormsModule,
-        // ReactiveFormsModule,
+        FormsModule,
+        ReactiveFormsModule,
         EditorRoutingModule,
-
     ]
 })
 export class EditorModule { }

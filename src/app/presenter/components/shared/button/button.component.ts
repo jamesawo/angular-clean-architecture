@@ -4,7 +4,7 @@ export type ButtonProps = {
     text?: string,
     type?: string,
     loading?: boolean,
-    action: () => void
+    action?: () => void
 }
 
 @Component({

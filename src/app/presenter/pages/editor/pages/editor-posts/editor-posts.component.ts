@@ -17,8 +17,6 @@ export class EditorPostsComponent {
 
     public postTable: Table<PostRequest> = { cols: [{ title: 'Post Title' }] };;
 
-    public openPostModal: () => void = () => { }
-
     public constructor(
         private postInteractor: PostInteractor,
         private modalService: ModalService<PostFormComponent, PostRequest>,
@@ -30,11 +28,11 @@ export class EditorPostsComponent {
         this.postTable.action = { onEdit: this.onEditPost, onRemove: this.onRemovePost }
     }
 
-    public onOpenModal = async (): Promise<void> => {
-        // await this.modalService.open({
-        //     component: PostFormComponent,
-        //     modalTitle: 'Create Post'
-        // });
+    public openPostModal = async (): Promise<void> => {
+        await this.modalService.open({
+            component: PostFormComponent,
+            modalTitle: 'Create Post'
+        });
     }
 
     private onEditPost = async (id: string, data?: PostRequest): Promise<void> => {

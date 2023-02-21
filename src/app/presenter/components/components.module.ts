@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DarkThemeSwitchComponent } from './shared/theme-switcher/dark-theme-switch/dark-theme-switch.component';
 import { ThemeSwitcherService } from './shared/theme-switcher/theme-switcher.service';
@@ -22,6 +23,7 @@ import { LinkComponent } from './shared/link/link.component';
 import { TableComponent } from './shared/table/table.component';
 import { ButtonComponent } from './shared/button/button.component';
 import { ModalComponent } from './shared/modal/modal.component';
+import { FormFieldComponent } from './shared/form-field/form-field.component';
 
 
 @NgModule({
@@ -44,6 +46,7 @@ import { ModalComponent } from './shared/modal/modal.component';
         TableComponent,
         ButtonComponent,
         ModalComponent,
+        FormFieldComponent,
 
     ],
     exports: [
@@ -60,10 +63,14 @@ import { ModalComponent } from './shared/modal/modal.component';
         TagComponent,
         TableComponent,
         ButtonComponent,
+        ModalComponent,
+        FormFieldComponent,
     ],
     imports: [
         CommonModule,
         RouterModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [ToastService, ThemeSwitcherService]
 })

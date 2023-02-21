@@ -1,1 +1,19 @@
-<p>post-form works!</p>
+<app-modal>
+    <form [formGroup]="form" (submit)="savePost()">
+
+        <app-form-field [props]="{ controlName: 'title',formGroup: form, isValid: isControlInValid  }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'excerpt',formGroup: form, isValid: isControlInValid  }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'author' ,formGroup: form, isValid: isControlInValid }"></app-form-field>
+        <app-form-field [props]="{ controlName: 'tags',formGroup: form, isValid: isControlInValid  }"></app-form-field>
+        <app-form-field [props]="{ controlName: 'date',formGroup: form, isValid: isControlInValid  }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'content',formGroup: form, isValid: isControlInValid  }"></app-form-field>
+
+
+        <div class="relative flex w-full flex-wrap items-stretch mb-3">
+            <app-button [props]="{ loading: isLoading, text:'Save', type:'submit' }"></app-button>
+        </div>
+    </form>
+</app-modal>
