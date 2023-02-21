@@ -1,10 +1,10 @@
+import { EditorLayoutComponent } from './presenter/components/layouts/editor-layout/editor-layout.component';
 import { PostDetailComponent } from './presenter/pages/post-detail/post-detail.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { BlogComponent } from './presenter/pages/blog/blog.component';
 import { BookmarksComponent } from './presenter/pages/bookmarks/bookmarks.component';
-import { EditorComponent } from './presenter/pages/editor/editor.component';
 import { HomeComponent } from './presenter/pages/home/home.component';
 import { ProjectsComponent } from './presenter/pages/projects/projects.component';
 import { NotFoundComponent } from './presenter/components/shared/not-found/not-found.component';
@@ -20,7 +20,7 @@ const routes: Routes = [
     {
         path: 'editor',
         loadChildren: () => import('./presenter/pages/editor/editor.module').then((c) => c.EditorModule),
-        component: EditorComponent
+        component: EditorLayoutComponent
     },
     { path: '**', component: NotFoundComponent },
 ];
