@@ -20,6 +20,7 @@ import { EditorHeaderComponent } from './layouts/editor-header/editor-header.com
 import { LinkComponent } from './shared/link/link.component';
 import { TableComponent } from './shared/table/table.component';
 import { ButtonComponent } from './shared/button/button.component';
+import { ModalComponent } from './shared/modal/modal.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { ButtonComponent } from './shared/button/button.component';
         LinkComponent,
         TableComponent,
         ButtonComponent,
+        ModalComponent,
 
     ],
     exports: [
