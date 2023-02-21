@@ -1,20 +1,23 @@
 <app-modal>
-    <form [formGroup]="form" (submit)="savePost()">
+    <!-- <form [formGroup]="form" (submit)="savePost()"> -->
+    <form [formGroup]="defaultValue?.form!" (submit)="defaultValue?.action()">
 
-        <app-form-field [props]="{ controlName: 'title',formGroup: form, isValid: isControlInValid  }"></app-form-field>
         <app-form-field
-            [props]="{ controlName: 'excerpt',formGroup: form, isValid: isControlInValid  }"></app-form-field>
+            [props]="{ controlName: 'title',formGroup: defaultValue?.form!, isValid: isControlInValid  }"></app-form-field>
         <app-form-field
-            [props]="{ controlName: 'author' ,formGroup: form, isValid: isControlInValid }"></app-form-field>
-        <app-form-field [props]="{ controlName: 'tags',formGroup: form, isValid: isControlInValid  }"></app-form-field>
+            [props]="{ controlName: 'excerpt',formGroup: defaultValue?.form!, isValid: isControlInValid  }"></app-form-field>
         <app-form-field
-            [props]="{ controlName: 'date',formGroup: form, isValid: isControlInValid , type: 'date' }"></app-form-field>
+            [props]="{ controlName: 'author' ,formGroup: defaultValue?.form!, isValid: isControlInValid }"></app-form-field>
         <app-form-field
-            [props]="{ controlName: 'content',formGroup: form, isValid: isControlInValid, type: 'text-area'  }"></app-form-field>
+            [props]="{ controlName: 'tags',formGroup: defaultValue?.form!, isValid: isControlInValid  }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'date',formGroup: defaultValue?.form!, isValid: isControlInValid , type: 'date' }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'content',formGroup: defaultValue?.form!, isValid: isControlInValid, type: 'text-area'  }"></app-form-field>
 
 
         <div class="relative flex w-full flex-wrap items-stretch mb-3">
-            <app-button [props]="{ loading: isLoading, text:'Save Post', type:'submit' }"></app-button>
+            <app-button [props]="{ loading: defaultValue?.isLoading }"></app-button>
         </div>
     </form>
 </app-modal>

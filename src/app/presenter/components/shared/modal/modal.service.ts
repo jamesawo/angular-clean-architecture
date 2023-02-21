@@ -1,7 +1,8 @@
 import { ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Injectable, Injector, Type } from "@angular/core";
 
 export type ComponentInput<U> = {
-    inputTitle: string, inputValue: U
+    inputTitle: string,
+    inputValue: U
 }
 
 @Injectable({

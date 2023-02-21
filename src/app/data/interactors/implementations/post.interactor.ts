@@ -26,7 +26,6 @@ export class PostInteractor implements IPostInteractor {
     }
 
     public savePost(post: PostRequest): Observable<Result> {
-        console.log(post);
         if (post._id) return this.update(post);
 
         return this.create(post);

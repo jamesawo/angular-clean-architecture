@@ -5,7 +5,7 @@ import { ToastService, ToastType } from './../../components/shared/toast/toast.s
 
 const isInvalidControl = (controlName: string, form: FormGroup): boolean => {
     const control = form?.controls[controlName];
-    return control.touched == true && control.status === 'INVALID';
+    return control?.touched == true && control?.status === 'INVALID';
 }
 
 const parseDate = (value?: string) => {
@@ -44,6 +44,8 @@ const onHttpResponse = async (response: Promise<Result>, toast: ToastService, lo
 }
 
 const showToast = (toast: ToastService, type: ToastType, title: string, message: string) => {
+    console.log(toast);
+
     toast.show({ title, message, type });
 }
 
