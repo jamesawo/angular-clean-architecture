@@ -18,6 +18,7 @@ import { TagComponent } from './shared/tag/tag.component';
 import { EditorLayoutComponent } from './layouts/editor-layout/editor-layout.component';
 import { EditorHeaderComponent } from './layouts/editor-header/editor-header.component';
 import { LinkComponent } from './shared/link/link.component';
+import { TableComponent } from './table/table.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { LinkComponent } from './shared/link/link.component';
         EditorLayoutComponent,
         EditorHeaderComponent,
         LinkComponent,
+        TableComponent,
 
     ],
     exports: [

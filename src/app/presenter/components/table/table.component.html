@@ -1,0 +1,40 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3" *ngFor="let col of payload?.cols">
+                    {{col.title}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of payload?.data"
+                class="flex  bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <!-- cols -->
+
+                <ng-container *ngIf="item.title as title">
+                    <th scope="row"
+                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white truncate w-2/3">
+                        {{title }}
+                    </th>
+                </ng-container>
+
+                <ng-container *ngIf="item.date as date">
+                    <td class="px-6 py-4">
+                        {{date}}
+                    </td>
+                </ng-container>
+
+                <!-- action -->
+                <ng-container *ngIf="payload?.action as evt">
+                    <td class="flex gap-2 px-6 py-4 text-right">
+                        <a (click)="evt.onEdit(item.id)"
+                            class="cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                        <a (click)="evt.onRemove(item.id)"
+                            class="cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                    </td>
+                </ng-container>
+            </tr>
+        </tbody>
+    </table>
+</div>
