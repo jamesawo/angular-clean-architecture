@@ -15,6 +15,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ThemeSwitcherComponent } from './shared/theme-switcher/theme-switcher.component';
 import { LightThemeSwitchComponent } from './shared/theme-switcher/light-theme-switch/light-theme-switch.component';
 import { TagComponent } from './shared/tag/tag.component';
+import { EditorLayoutComponent } from './layouts/editor-layout/editor-layout.component';
+import { EditorHeaderComponent } from './layouts/editor-header/editor-header.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { TagComponent } from './shared/tag/tag.component';
         DarkThemeSwitchComponent,
         ThemeSwitcherComponent,
         TagComponent,
+        EditorLayoutComponent,
+        EditorHeaderComponent,
 
     ],
     exports: [
