@@ -8,14 +8,9 @@ import { EditorHomeComponent } from './pages/editor-home/editor-home.component';
 import { EditorPostsComponent } from './pages/editor-posts/editor-posts.component';
 import { EditorProjectsComponent } from './pages/editor-projects/editor-projects.component';
 import { EditorBookmarksComponent } from './pages/editor-bookmarks/editor-bookmarks.component';
+import { ComponentModule } from "../../components/components.module";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        EditorRoutingModule
-    ],
     declarations: [
         EditorComponent,
         EditorHomeComponent,
@@ -26,6 +21,13 @@ import { EditorBookmarksComponent } from './pages/editor-bookmarks/editor-bookma
     providers: [],
     exports: [
         EditorComponent
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        EditorRoutingModule,
+        ComponentModule
     ]
 })
 export class EditorModule { }

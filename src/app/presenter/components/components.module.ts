@@ -44,6 +44,7 @@ import { ButtonComponent } from './shared/button/button.component';
 
     ],
     exports: [
+        RouterModule,
         FooterComponent,
         NotFoundComponent,
         ToastComponent,
@@ -53,7 +54,8 @@ import { ButtonComponent } from './shared/button/button.component';
         DarkThemeSwitchComponent,
         ThemeSwitcherComponent,
         TagComponent,
-        RouterModule
+        TableComponent,
+        ButtonComponent,
     ],
     imports: [
         RouterModule,

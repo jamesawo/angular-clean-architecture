@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 
 export type ButtonProps = {
     text?: string,
-    type: string,
-    loading: boolean,
+    type?: string,
+    loading?: boolean,
     action: () => void
 }
 
