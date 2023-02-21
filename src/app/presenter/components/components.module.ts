@@ -17,6 +17,7 @@ import { LightThemeSwitchComponent } from './shared/theme-switcher/light-theme-s
 import { TagComponent } from './shared/tag/tag.component';
 import { EditorLayoutComponent } from './layouts/editor-layout/editor-layout.component';
 import { EditorHeaderComponent } from './layouts/editor-header/editor-header.component';
+import { LinkComponent } from './shared/link/link.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { EditorHeaderComponent } from './layouts/editor-header/editor-header.com
         TagComponent,
         EditorLayoutComponent,
         EditorHeaderComponent,
+        LinkComponent,
 
     ],
     exports: [
