@@ -25,9 +25,14 @@ export class PostInteractor implements IPostInteractor {
     ) {
     }
 
-    public create(post: PostRequest): Observable<PostRequest> {
-        this.createPostUsecase.execute(new Param(post));
-        return of(post);
+    public savePost(post: PostRequest): Observable<Result> {
+        if (post._id) return this.update(post);
+
+        return this.create(post);
+    }
+
+    public create(post: PostRequest): Observable<Result> {
+        return this.createPostUsecase.execute(new Param(post));
     }
 
     public getMany(): Observable<PostRequest[]> {
