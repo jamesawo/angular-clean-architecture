@@ -7,7 +7,8 @@
         <app-form-field
             [props]="{ controlName: 'author' ,formGroup: form, isValid: isControlInValid }"></app-form-field>
         <app-form-field [props]="{ controlName: 'tags',formGroup: form, isValid: isControlInValid  }"></app-form-field>
-        <app-form-field [props]="{ controlName: 'date',formGroup: form, isValid: isControlInValid  }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'date',formGroup: form, isValid: isControlInValid , type: 'date' }"></app-form-field>
         <app-form-field
             [props]="{ controlName: 'content',formGroup: form, isValid: isControlInValid  }"></app-form-field>
 

@@ -12,7 +12,7 @@
     <ng-template #input>
         <input [id]="props?.controlName" [type]="props?.type" [formControlName]="props?.controlName??''"
             [placeholder]="'Enter '+ props?.controlName"
-            [ngClass]="{'border-red-300': props?.isValid(props?.controlName??'')}"
+            [ngClass]="{'border-red-300': props?.isValid(props?.controlName??'')}" onfocus="this.showPicker() ?? ''"
             class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:shadow-outline w-full pr-10" />
     </ng-template>
 
