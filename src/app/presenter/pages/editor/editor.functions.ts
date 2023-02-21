@@ -28,13 +28,19 @@ const isFormInvalid = (form: FormGroup) => {
     return false;
 }
 
-const onHttpResponse = async (response: Promise<Result>, toast: ToastService) => {
-    const value = await response;
-    if (value && value.acknowledged) {
-        showToast(toast, ToastType.success, 'Success', 'Action Successfully');
-    } else {
-        showToast(toast, ToastType.error, 'Failed', 'Opps Action Failed');
+const onHttpResponse = async (response: Promise<Result>, toast: ToastService, loading?: boolean) => {
+    try {
+        const value = await response;
+        value && value.acknowledged
+            ? showToast(toast, ToastType.success, 'Success', 'Action Successfully')
+            : showToast(toast, ToastType.error, 'Failed', 'Opps Action Failed');
+    } catch (error: any) {
+        const { message } = error;
+        showToast(toast, ToastType.error, 'Failed', message ?? 'Opps Action Failed');
+    } finally {
+        loading = false;
     }
+
 }
 
 const showToast = (toast: ToastService, type: ToastType, title: string, message: string) => {

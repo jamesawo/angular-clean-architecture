@@ -4,8 +4,9 @@ export type ButtonProps = {
     text?: string,
     type?: string,
     loading?: boolean,
-    action?: () => void
+
 }
+
 
 @Component({
     selector: 'app-button',
@@ -16,6 +17,9 @@ export type ButtonProps = {
 export class ButtonComponent {
 
     @Input()
-    props: ButtonProps = { type: 'button', loading: false, action: () => { } };
+    props: ButtonProps = { type: 'button', loading: false };
+
+    @Input()
+    action: () => void = () => { }
 
 }

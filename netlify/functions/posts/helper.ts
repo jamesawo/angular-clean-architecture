@@ -56,7 +56,6 @@ const post = async (event: HandlerEvent) => {
                 created_at: new Date()
             },
         );
-
     } catch (error) {
         console.log(error);
         throw new Error(error.message);

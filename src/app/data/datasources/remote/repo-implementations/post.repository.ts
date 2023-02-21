@@ -20,8 +20,8 @@ export class PostRepository implements IPostRepository {
     }
 
     createPost(post: PostEntity): Observable<Result> {
-        return of();
-
+        return this.http.post<{ data: Result }>(`${this.baseUrl}`, post)
+            .pipe(map(x => x.data));
     }
 
     getPost(id: string): Observable<PostEntity> {
@@ -31,11 +31,13 @@ export class PostRepository implements IPostRepository {
     }
 
     updatePost(id: string, post: PostEntity): Observable<Result> {
-        return of();
+        return this.http.put<{ data: Result }>(`${this.baseUrl}?postId=${id}`, post)
+            .pipe(map(x => x.data));
     }
 
     removePost(id: string): Observable<Result> {
-        return of();
+        return this.http.delete<{ data: Result }>(`${this.baseUrl}?postId=${id}`)
+            .pipe(map(x => x.data));
     }
 
 }

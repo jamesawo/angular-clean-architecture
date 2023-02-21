@@ -1,3 +1,4 @@
+import { EditorPostsComponent } from './../../pages/editor-posts/editor-posts.component';
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
@@ -45,8 +46,9 @@ export class PostFormComponent {
         this.isLoading = true;
         const formValues: PostRequest = { ...this.form.value, tags: updateTags(this.form), _id: this.defaultValue?._id };
         const response = firstValueFrom(this.postInteractor.savePost(formValues));
-        await onHttpResponse(response, this.toastService);
+        await onHttpResponse(response, this.toastService, this.isLoading);
         this.modalService.close();
+
     }
 
     public isControlInValid = (controlName: string): boolean => isInvalidControl(controlName, this.form)

@@ -10,11 +10,11 @@
         <app-form-field
             [props]="{ controlName: 'date',formGroup: form, isValid: isControlInValid , type: 'date' }"></app-form-field>
         <app-form-field
-            [props]="{ controlName: 'content',formGroup: form, isValid: isControlInValid  }"></app-form-field>
+            [props]="{ controlName: 'content',formGroup: form, isValid: isControlInValid, type: 'text-area'  }"></app-form-field>
 
 
         <div class="relative flex w-full flex-wrap items-stretch mb-3">
-            <app-button [props]="{ loading: isLoading, text:'Save', type:'submit' }"></app-button>
+            <app-button [props]="{ loading: isLoading, text:'Save Post', type:'submit' }"></app-button>
         </div>
     </form>
 </app-modal>
