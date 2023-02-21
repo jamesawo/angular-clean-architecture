@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { DarkThemeSwitchComponent } from './shared/theme-switcher/dark-theme-switch/dark-theme-switch.component';
 import { ThemeSwitcherService } from './shared/theme-switcher/theme-switcher.service';
 import { ToastService } from './shared/toast/toast.service';
@@ -46,6 +47,7 @@ import { ModalComponent } from './shared/modal/modal.component';
 
     ],
     exports: [
+        CommonModule,
         RouterModule,
         FooterComponent,
         NotFoundComponent,
@@ -60,8 +62,8 @@ import { ModalComponent } from './shared/modal/modal.component';
         ButtonComponent,
     ],
     imports: [
+        CommonModule,
         RouterModule,
-        BrowserModule
     ],
     providers: [ToastService, ThemeSwitcherService]
 })

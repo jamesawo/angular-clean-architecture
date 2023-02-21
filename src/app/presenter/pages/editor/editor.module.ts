@@ -1,3 +1,5 @@
+import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,6 +11,9 @@ import { EditorPostsComponent } from './pages/editor-posts/editor-posts.componen
 import { EditorProjectsComponent } from './pages/editor-projects/editor-projects.component';
 import { EditorBookmarksComponent } from './pages/editor-bookmarks/editor-bookmarks.component';
 import { ComponentModule } from "../../components/components.module";
+import { PostFormComponent } from './components/post-form/post-form.component';
+import { ProjectFormComponent } from './components/project-form/project-form.component';
+import { BookmarkFormComponent } from './components/bookmark-form/bookmark-form.component';
 
 @NgModule({
     declarations: [
@@ -16,18 +21,24 @@ import { ComponentModule } from "../../components/components.module";
         EditorHomeComponent,
         EditorPostsComponent,
         EditorProjectsComponent,
-        EditorBookmarksComponent
+        EditorBookmarksComponent,
+        PostFormComponent,
+        ProjectFormComponent,
+        BookmarkFormComponent
     ],
     providers: [],
     exports: [
         EditorComponent
     ],
     imports: [
+        RouterModule,
+        ComponentModule,
         CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
+
+        // FormsModule,
+        // ReactiveFormsModule,
         EditorRoutingModule,
-        ComponentModule
+
     ]
 })
 export class EditorModule { }
