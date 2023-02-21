@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-table',
@@ -7,10 +7,13 @@ import { Component, Input } from '@angular/core';
     styles: [
     ]
 })
-export class TableComponent {
+export class TableComponent implements OnInit {
 
     @Input()
     payload?: Table<any>;
+
+    ngOnInit() {
+    }
 
 }
 
@@ -28,6 +31,6 @@ type TableAction<T> = {
 export type Table<T> = {
 
     cols?: { title: string }[],
-    data?: Observable<T[]>,
+    data$?: Observable<T[]>,
     action?: TableAction<T>
 }

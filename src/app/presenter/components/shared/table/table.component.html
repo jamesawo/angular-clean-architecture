@@ -8,8 +8,9 @@
             </tr>
         </thead>
         <tbody>
-            <ng-component *ngIf="payload?.data | async as data; else noData">
-                <tr *ngFor="let item of data"
+
+            <ng-container *ngIf="payload?.data$ | async as list; else noData">
+                <tr *ngFor="let item of list"
                     class="flex  bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
 
                     <ng-container *ngIf="item.title as title">
@@ -35,11 +36,11 @@
                         </td>
                     </ng-container>
                 </tr>
-            </ng-component>
+            </ng-container>
 
         </tbody>
     </table>
 </div>
 <ng-template #noData>
-    <p>No data yet</p>
+    <p class="text-center p-2">No data yet</p>
 </ng-template>
