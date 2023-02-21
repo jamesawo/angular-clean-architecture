@@ -8,33 +8,38 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of payload?.data"
-                class="flex  bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <!-- cols -->
+            <ng-component *ngIf="payload?.data | async as data; else noData">
+                <tr *ngFor="let item of data"
+                    class="flex  bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
 
-                <ng-container *ngIf="item.title as title">
-                    <th scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white truncate w-2/3">
-                        {{title }}
-                    </th>
-                </ng-container>
+                    <ng-container *ngIf="item.title as title">
+                        <th scope="row"
+                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white truncate w-2/3">
+                            {{title }}
+                        </th>
+                    </ng-container>
 
-                <ng-container *ngIf="item.date as date">
-                    <td class="px-6 py-4">
-                        {{date}}
-                    </td>
-                </ng-container>
+                    <ng-container *ngIf="item.date as date">
+                        <td class="px-6 py-4">
+                            {{date}}
+                        </td>
+                    </ng-container>
 
-                <!-- action -->
-                <ng-container *ngIf="payload?.action as evt">
-                    <td class="flex gap-2 px-6 py-4 text-right">
-                        <a (click)="evt.onEdit(item.id)"
-                            class="cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        <a (click)="evt.onRemove(item.id)"
-                            class="cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
-                    </td>
-                </ng-container>
-            </tr>
+                    <!-- action -->
+                    <ng-container *ngIf="payload?.action as evt">
+                        <td class="flex gap-2 px-6 py-4 text-right">
+                            <a (click)="evt.onEdit(item.id)"
+                                class="cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <a (click)="evt.onRemove(item.id)"
+                                class="cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
+                        </td>
+                    </ng-container>
+                </tr>
+            </ng-component>
+
         </tbody>
     </table>
 </div>
+<ng-template #noData>
+    <p>No data yet</p>
+</ng-template>
