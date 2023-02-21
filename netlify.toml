@@ -11,3 +11,4 @@ command = "ng build"
 
 [functions]
 directory = "./netlify/functions"
+external_node_modules = ["mongodb"]
