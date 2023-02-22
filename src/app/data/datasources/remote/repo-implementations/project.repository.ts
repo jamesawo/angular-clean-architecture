@@ -19,8 +19,9 @@ export class ProjectRepository implements IProjectRepository {
             .pipe(map(x => x.data));
     }
 
-    createProject(Project: ProjectEntity): Observable<Result> {
-        return of();
+    createProject(project: ProjectEntity): Observable<Result> {
+        return this.http.post<{ data: Result }>(`${this.baseUrl}`, project)
+            .pipe(map(x => x.data));
     }
 
     getProject(id: string): Observable<ProjectEntity> {
@@ -29,12 +30,14 @@ export class ProjectRepository implements IProjectRepository {
             .pipe(map(x => x.data));
     }
 
-    updateProject(id: string, Project: ProjectEntity): Observable<Result> {
-        return of();
+    updateProject(id: string, project: ProjectEntity): Observable<Result> {
+        return this.http.put<{ data: Result }>(`${this.baseUrl}?projectId=${id}`, project)
+            .pipe(map(x => x.data));
     }
 
     removeProject(id: string): Observable<Result> {
-        return of();
+        return this.http.delete<{ data: Result }>(`${this.baseUrl}?projectId=${id}`)
+            .pipe(map(x => x.data));
     }
 
 }
