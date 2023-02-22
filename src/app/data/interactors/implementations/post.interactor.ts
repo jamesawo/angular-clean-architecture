@@ -20,7 +20,7 @@ export class PostInteractor implements IPostInteractor {
         private getOnePostUsecase: GetOnePostUsecase,
         private getManyPostUsecase: GetManyPostUsecase,
         private removePostUsecase: RemovePostUsecase,
-        private UpdatePostUsecase: UpdatePostUsecase,
+        private updatePostUsecase: UpdatePostUsecase,
         private createPostUsecase: CreatePostUsecase
     ) {
     }
@@ -45,7 +45,7 @@ export class PostInteractor implements IPostInteractor {
     }
 
     public update(post: PostRequest): Observable<Result> {
-        return this.UpdatePostUsecase.execute(new Param(post));
+        return this.updatePostUsecase.execute(new Param(post));
     }
 
     public delete(slug: string): Observable<Result> {
