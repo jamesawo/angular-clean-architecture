@@ -5,6 +5,11 @@ export type ComponentInput<U> = {
     inputValue: U
 }
 
+export type ComponentParam<T> = {
+    component: Type<T>,
+    modalTitle?: string
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -25,10 +30,7 @@ export class ModalService<T, U = void> {
         this.componentRef = undefined;
     }
 
-    public async open(
-        param: { component: Type<T>, modalTitle?: string },
-        input?: ComponentInput<U>
-    ): Promise<void> {
+    public async open(param: ComponentParam<T>, input?: ComponentInput<U>): Promise<void> {
         if (this.componentRef) return
 
         this.title = param.modalTitle;

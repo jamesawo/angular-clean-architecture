@@ -1,4 +1,4 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
@@ -7,8 +7,8 @@ import { PostInteractor } from './../../../../../data/interactors/implementation
 import { PostRequest } from './../../../../../data/requests/posts.request';
 import { Table } from 'src/app/presenter/components/shared/table/table.component';
 import { ToastService } from 'src/app/presenter/components/shared/toast/toast.service';
-import { ModalService } from 'src/app/presenter/components/shared/modal/modal.service';
-import { isFormInvalid, onHttpResponse, updateTags } from '../../editor.functions';
+import { ComponentParam, ModalService } from 'src/app/presenter/components/shared/modal/modal.service';
+import { isFormInvalid, onHttpResponse, parseDate, updateTags } from '../../editor.functions';
 
 
 @Component({
@@ -22,7 +22,6 @@ export class EditorPostsComponent {
     public postTable: Table<PostRequest> = { cols: [{ title: 'Post Title' }] };
     public form: FormGroup = new FormGroup({});
     public isLoading = false;
-    public post = new PostRequest();
 
     public constructor(
         private postInteractor: PostInteractor,
@@ -32,7 +31,6 @@ export class EditorPostsComponent {
 
     ngOnInit(): void {
         this.setTableData();
-        this.setForm();
     }
 
     public setTableData = () => {
@@ -41,20 +39,30 @@ export class EditorPostsComponent {
     }
 
     public openPostModal = async (): Promise<void> => {
-        const param = { component: PostFormComponent, modalTitle: 'Create Post' };
-        const props = { form: this.form, action: this.onSavePost, data: this.post, isLoading: this.isLoading };
-        const defaultValue = { inputTitle: 'defaultValue', inputValue: props, };
-        await this.modalService.open(param, defaultValue);
+        await this.modalService.open(
+            this.getModalParam('Create Post'),
+            this.getModalDefaultValue(new PostRequest())
+        );
     }
 
-    private onEditPost = async (id: string, data?: PostRequest): Promise<void> => {
-        this.post = data!;
-        const param = { component: PostFormComponent, modalTitle: 'Update Post' };
-        const props = { form: this.form, action: this.onSavePost, data: data!, isLoading: this.isLoading };
+    private onEditPost = async (id: string, post?: PostRequest): Promise<void> => {
+        await this.modalService.open(
+            this.getModalParam('Update Post'),
+            this.getModalDefaultValue(post!)
+        );
+    }
 
-        const defaultValue = { inputTitle: 'defaultValue', inputValue: props };
-        // const defaultValue = { inputTitle: 'defaultValue', inputValue: data! };
-        await this.modalService.open(param, defaultValue);
+    private getModalDefaultValue = (post: PostRequest) => {
+        return { inputTitle: 'defaultValue', inputValue: this.getModalProps(post) };
+    }
+
+    private getModalProps = (post: PostRequest): PostFormProps => {
+        this.setForm(post);
+        return { form: this.form, action: this.onSavePost, data: post, isLoading: this.isLoading };
+    }
+
+    private getModalParam = (title: string): ComponentParam<PostFormComponent> => {
+        return { component: PostFormComponent, modalTitle: title };
     }
 
     private onRemovePost = (id: string): void => {
@@ -62,35 +70,39 @@ export class EditorPostsComponent {
         if (id && result) {
             const response = firstValueFrom(this.postInteractor.delete(id));
             onHttpResponse(response, this.toastService);
-            setTimeout(() => {
-                this.ngOnInit();
-            }), 2000
+            this.onRefreshComponent();
         }
+    }
+
+    private onRefreshComponent = () => {
+        setTimeout(() => this.ngOnInit()), 2000;
     }
 
     private onSavePost = async () => {
         if (isFormInvalid(this.form)) return;
 
         this.isLoading = true;
-        const formValues: PostRequest = { ...this.form.value, tags: updateTags(this.form), _id: this.post?._id };
+        const formValues: PostRequest = { ...this.form.value, tags: updateTags(this.form) };
         const response = firstValueFrom(this.postInteractor.savePost(formValues));
         await onHttpResponse(response, this.toastService, this.isLoading);
         this.modalService.close();
-        setTimeout(() => {
-            this.ngOnInit();
-        }), 2000
-
+        this.onRefreshComponent();
     }
 
-    private setForm = () => {
+    private setForm = (data?: PostRequest) => {
+
         this.form = new FormGroup({
-            title: new FormControl(),
-            date: new FormControl(),
-            tags: new FormControl(),
-            content: new FormControl(),
-            author: new FormControl(),
-            excerpt: new FormControl(),
+            _id: new FormControl(data?._id),
+            title: new FormControl(data?.title, [Validators.required]),
+            date: new FormControl(parseDate(data?.date), [Validators.required]),
+            tags: new FormControl(data?.tags?.toString(), [Validators.required]),
+            content: new FormControl(data?.content, [Validators.required]),
+            author: new FormControl(data?.author, []),
+            excerpt: new FormControl(data?.excerpt, [Validators.required]),
         })
+
+        console.log(this.form);
+
     }
 
 }

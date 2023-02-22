@@ -1,10 +1,8 @@
-import { EditorPostsComponent } from './../../pages/editor-posts/editor-posts.component';
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { firstValueFrom } from 'rxjs';
 import { ModalService } from 'src/app/presenter/components/shared/modal/modal.service';
 import { ToastService } from 'src/app/presenter/components/shared/toast/toast.service';
-import { isInvalidControl, onHttpResponse, parseDate, updateTags } from '../../editor.functions';
+import { isInvalidControl, parseDate } from '../../editor.functions';
 
 import { PostInteractor } from './../../../../../data/interactors/implementations/post.interactor';
 import { PostRequest } from './../../../../../data/requests/posts.request';
@@ -35,6 +33,7 @@ export class PostFormComponent {
 
     ngOnInit(): void {
 
+        /*
         let { data, form } = this.defaultValue!;
 
         form = this.fb.group({
@@ -45,6 +44,8 @@ export class PostFormComponent {
             author: new FormControl(data?.author, []),
             excerpt: new FormControl(data?.excerpt, [Validators.required]),
         })
+        */
+
     }
 
     public isControlInValid = (controlName: string): boolean => isInvalidControl(controlName, this.defaultValue?.form!);

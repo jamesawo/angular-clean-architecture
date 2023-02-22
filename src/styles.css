@@ -19,3 +19,8 @@ body.dark .prose p>a,
 body.dark .prose {
     color: white;
 }
+
+body.dark li>strong {
+    color: white;
+    font-weight: bold;
+}
