@@ -11,7 +11,7 @@
             [props]="{ controlName: 'date',formGroup: defaultValue?.form!, isValid: isControlInValid, type: 'date'}"></app-form-field>
 
         <div class="relative flex w-full flex-wrap items-stretch mb-3">
-            <app-button [props]="{ loading: defaultValue?.isLoading }"></app-button>
+            <app-button [props]="{ text:'Save', loading: defaultValue?.isLoading }"></app-button>
         </div>
     </form>
 </app-modal>
