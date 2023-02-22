@@ -13,8 +13,7 @@ const put = async (event: HandlerEvent) => {
         const database = client.db(process.env['MONGODB_NAME']);
         const result = await database.collection("projects").updateOne(
             { _id: new ObjectId(_id) },
-            { $set: restProject, },
-            { upsert: false }
+            { $set: restProject },
         );
 
         return result;

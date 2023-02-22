@@ -8,6 +8,8 @@ import { BookmarkInteractor } from '../implementations/bookmark.interactor';
 @Injectable({ providedIn: 'root', useClass: BookmarkInteractor }) // default implementation
 export abstract class IBookmarkInteractor {
 
+    abstract save(bookmark: BookmarkRequest): Observable<Result>;
+
     abstract getMany(): Observable<BookmarkRequest[]>;
 
     abstract getOne(slug: string): Observable<BookmarkRequest>

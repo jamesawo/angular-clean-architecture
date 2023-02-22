@@ -1,11 +1,98 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { firstValueFrom } from 'rxjs';
+
+import { BookmarkInteractor } from 'src/app/data/interactors/implementations/bookmark.interactor';
+import { BookmarFormProps, BookmarkFormComponent } from './../../components/bookmark-form/bookmark-form.component';
+import { Table } from 'src/app/presenter/components/shared/table/table.component';
+import { ToastService } from 'src/app/presenter/components/shared/toast/toast.service';
+import { ModalService } from 'src/app/presenter/components/shared/modal/modal.service';
+import { isFormInvalid, joinShorts, onHttpResponse, parseDate, updateTags } from '../../editor.functions';
+import { BookmarkRequest } from 'src/app/data/requests/bookmark.request';
+
 
 @Component({
-  selector: 'app-editor-bookmarks',
-  templateUrl: './editor-bookmarks.component.html',
-  styles: [
-  ]
+    selector: 'app-editor-bookmarks',
+    templateUrl: './editor-bookmarks.component.html',
+    styles: [
+    ]
 })
-export class EditorBookmarksComponent {
+export class EditorBookmarksComponent implements OnInit {
+    public tableData: Table<BookmarkRequest> = { cols: [{ title: 'Project Title' }] };
+    public form: FormGroup = new FormGroup({});
+    public isLoading = false;
 
+    public constructor(
+        private bookmarkInteractor: BookmarkInteractor,
+        private modalService: ModalService<BookmarkFormComponent, BookmarFormProps>,
+        private toastService: ToastService
+    ) { }
+
+    ngOnInit(): void {
+        this.setTableData();
+    }
+
+    public setTableData = () => {
+        this.tableData.action = { onEdit: this.onEditPost, onRemove: this.onRemoveBookmark }
+        this.tableData.data$ = this.bookmarkInteractor.getMany();
+    }
+
+    public openModal = async (): Promise<void> => {
+        await this.modalService.open(
+            { component: BookmarkFormComponent, modalTitle: 'Create Bookmark' },
+            { inputTitle: 'defaultValue', inputValue: this.getModalProps(new BookmarkRequest()) }
+        );
+    }
+
+    private onEditPost = async (id: string, post?: BookmarkRequest): Promise<void> => {
+        await this.modalService.open(
+            { component: BookmarkFormComponent, modalTitle: 'Update Bookmark' },
+            { inputTitle: 'defaultValue', inputValue: this.getModalProps(post!) }
+        );
+    }
+
+    private onRemoveBookmark = (id: string): void => {
+        const result: boolean = confirm('Are you sure?');
+        if (id && result) {
+            const response = firstValueFrom(this.bookmarkInteractor.delete(id));
+            onHttpResponse(response, this.toastService);
+            this.onRefreshComponent();
+        }
+    }
+
+    private onSaveBookmark = async () => {
+        if (isFormInvalid(this.form)) return;
+
+        this.isLoading = true;
+        const formValues: BookmarkRequest = {
+            ...this.form.value,
+            tags: updateTags(this.form),
+            short: joinShorts(this.form)
+        };
+        const response = firstValueFrom(this.bookmarkInteractor.save(formValues));
+        await onHttpResponse(response, this.toastService);
+        this.modalService.close();
+        this.onRefreshComponent();
+    }
+
+    private setForm = (bookmark?: BookmarkRequest) => {
+        this.isLoading = false;
+        this.form = new FormGroup({
+            _id: new FormControl(bookmark?._id),
+            tags: new FormControl(bookmark?.tags?.toString(), [Validators.required]),
+            short: new FormControl(bookmark?.short, [Validators.required]),
+            url: new FormControl(bookmark?.url, [Validators.required]),
+            date: new FormControl(parseDate(bookmark?.date), [Validators.required]),
+        })
+
+    }
+
+    private getModalProps = (post: BookmarkRequest): BookmarFormProps => {
+        this.setForm(post);
+        return { form: this.form, action: this.onSaveBookmark, data: post, isLoading: this.isLoading };
+    }
+
+    private onRefreshComponent = () => {
+        setTimeout(() => this.ngOnInit()), 2000;
+    }
 }

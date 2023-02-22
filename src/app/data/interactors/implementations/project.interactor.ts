@@ -25,6 +25,12 @@ export class ProjectInteractor implements IProjectInteractor {
     ) {
     }
 
+    public save(project: ProjectRequest): Observable<Result> {
+        if (project._id) return this.update(project);
+
+        return this.create(project);
+    }
+
     public create(project: ProjectRequest): Observable<Result> {
         return this.createProjectUsecase.execute(new Param(project));
     }

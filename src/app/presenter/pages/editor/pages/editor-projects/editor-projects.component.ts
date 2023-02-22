@@ -1,14 +1,14 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { firstValueFrom } from 'rxjs';
+
 import { ProjectFormComponent, ProjectFormProps } from './../../components/project-form/project-form.component';
 import { ProjectInteractor } from './../../../../../data/interactors/implementations/project.interactor';
 import { ProjectRequest } from 'src/app/data/requests/project.request';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
-
 import { Table } from 'src/app/presenter/components/shared/table/table.component';
 import { ToastService } from 'src/app/presenter/components/shared/toast/toast.service';
 import { ModalService } from 'src/app/presenter/components/shared/modal/modal.service';
-import { isFormInvalid, onHttpResponse, updateTags } from '../../editor.functions';
+import { getActionLink, isFormInvalid, onHttpResponse, splitText, updateTags } from '../../editor.functions';
 
 
 @Component({
@@ -34,7 +34,7 @@ export class EditorProjectsComponent implements OnInit {
     }
 
     public setTableData = () => {
-        this.tableData.action = { onEdit: this.onEditPost, onRemove: this.onRemovePost }
+        this.tableData.action = { onEdit: this.onEditPost, onRemove: this.onRemoveProject }
         this.tableData.data$ = this.projectInteractor.getMany();
     }
 
@@ -52,7 +52,7 @@ export class EditorProjectsComponent implements OnInit {
         );
     }
 
-    private onRemovePost = (id: string): void => {
+    private onRemoveProject = (id: string): void => {
         const result: boolean = confirm('Are you sure?');
         if (id && result) {
             const response = firstValueFrom(this.projectInteractor.delete(id));
@@ -61,12 +61,21 @@ export class EditorProjectsComponent implements OnInit {
         }
     }
 
-    private onSavePost = async () => {
+    private onSaveProject = async () => {
         if (isFormInvalid(this.form)) return;
 
         this.isLoading = true;
-        const formValues: ProjectRequest = { ...this.form.value, tags: updateTags(this.form) };
-        const response = firstValueFrom(this.projectInteractor.create(formValues));
+        const formValues: ProjectRequest = {
+            ...this.form.value,
+            features: splitText(this.form, 'features'),
+            industries: splitText(this.form, 'industries'),
+            modules: splitText(this.form, 'modules'),
+            tools: splitText(this.form, 'tools'),
+            action: getActionLink(this.form)
+        };
+
+
+        const response = firstValueFrom(this.projectInteractor.save(formValues));
         await onHttpResponse(response, this.toastService);
         this.modalService.close();
         this.onRefreshComponent();
@@ -92,7 +101,7 @@ export class EditorProjectsComponent implements OnInit {
 
     private getModalProps = (post: ProjectRequest): ProjectFormProps => {
         this.setForm(post);
-        return { form: this.form, action: this.onSavePost, data: post, isLoading: this.isLoading };
+        return { form: this.form, action: this.onSaveProject, data: post, isLoading: this.isLoading };
     }
 
     private onRefreshComponent = () => {

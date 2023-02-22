@@ -1,1 +1,17 @@
-<p>bookmark-form works!</p>
+<app-modal>
+    <form [formGroup]="defaultValue?.form!" (submit)="defaultValue?.action()">
+
+        <app-form-field
+            [props]="{ controlName: 'url',formGroup: defaultValue?.form!, isValid: isControlInValid  }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'short',formGroup: defaultValue?.form!, isValid: isControlInValid }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'tags',formGroup: defaultValue?.form!, isValid: isControlInValid }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'date',formGroup: defaultValue?.form!, isValid: isControlInValid, type: 'date'}"></app-form-field>
+
+        <div class="relative flex w-full flex-wrap items-stretch mb-3">
+            <app-button [props]="{ loading: defaultValue?.isLoading }"></app-button>
+        </div>
+    </form>
+</app-modal>

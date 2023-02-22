@@ -9,6 +9,8 @@ import { ProjectInteractor } from '../implementations/project.interactor';
 @Injectable({ providedIn: 'root', useClass: ProjectInteractor }) // default implementation
 export abstract class IProjectInteractor {
 
+    abstract save(project: ProjectRequest): Observable<Result>;
+
     abstract getMany(): Observable<ProjectRequest[]>;
 
     abstract getOne(slug: string): Observable<ProjectRequest>

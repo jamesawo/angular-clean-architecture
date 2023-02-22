@@ -1,10 +1,10 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { RemoveBookmarkUsecase } from './../../../domain/usecases/bookmark-usecases/remove-bookmark.usecase';
 import { UpdateBookmarkUsecase } from './../../../domain/usecases/bookmark-usecases/update-bookmark.usecase';
 import { GetOneBookmarkUsecase } from './../../../domain/usecases/bookmark-usecases/get-one-bookmark.usecase';
 import { GetManyBookmarksUsecase } from './../../../domain/usecases/bookmark-usecases/get-many-bookmarks.usecase';
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-
 import { Result } from './../../../core/types/types';
 import { Param } from 'src/app/core/params/param.payload';
 import { BookmarkRequest } from '../../requests/bookmark.request';
@@ -23,6 +23,12 @@ export class BookmarkInteractor implements IBookmarkInteractor {
         private updateBookmarkUsecase: UpdateBookmarkUsecase,
         private removeBookmarkUsecase: RemoveBookmarkUsecase
     ) {
+    }
+
+    public save(bookmark: BookmarkRequest): Observable<Result> {
+        if (bookmark._id) return this.update(bookmark);
+
+        return this.create(bookmark);
     }
 
     public create(bookmark: BookmarkRequest): Observable<Result> {

@@ -21,6 +21,26 @@ const updateTags = (form: FormGroup) => {
     return tags?.split(',') ?? []
 }
 
+const splitText = (form: FormGroup, text: string) => {
+    const textBeforeSplit = form.get(text)?.value;
+    return textBeforeSplit?.split(',') ?? [];
+}
+
+const getActionLink = (form: FormGroup) => {
+    return {
+        link: form.get('actionLink')?.value ?? '',
+        title: form.get('actionTitle')?.value ?? '',
+    }
+}
+
+const joinShorts = (form: FormGroup) => {
+    const { short } = form.value;
+    if (short) {
+        return short?.split(' ').join('-');
+    }
+    return '';
+}
+
 const isFormInvalid = (form: FormGroup) => {
     if (form.invalid) {
         form.markAllAsTouched();
@@ -56,4 +76,7 @@ export {
     isFormInvalid,
     onHttpResponse,
     showToast,
+    joinShorts,
+    splitText,
+    getActionLink
 }
