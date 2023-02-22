@@ -12,7 +12,7 @@ export abstract class IBookmarkInteractor {
 
     abstract getOne(slug: string): Observable<BookmarkRequest>
 
-    abstract create(bookmark: BookmarkRequest): Observable<BookmarkRequest>;
+    abstract create(bookmark: BookmarkRequest): Observable<Result>;
 
     abstract update(bookmark: BookmarkRequest): Observable<Result>;
 

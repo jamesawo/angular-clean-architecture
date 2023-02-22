@@ -1,3 +1,6 @@
+import { RemoveBookmarkUsecase } from './../../../domain/usecases/bookmark-usecases/remove-bookmark.usecase';
+import { UpdateBookmarkUsecase } from './../../../domain/usecases/bookmark-usecases/update-bookmark.usecase';
+import { GetOneBookmarkUsecase } from './../../../domain/usecases/bookmark-usecases/get-one-bookmark.usecase';
 import { GetManyBookmarksUsecase } from './../../../domain/usecases/bookmark-usecases/get-many-bookmarks.usecase';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
@@ -15,30 +18,31 @@ export class BookmarkInteractor implements IBookmarkInteractor {
 
     constructor(
         private createBookmarkUsecase: CreateBookmarkUsecase,
-        private getManyBookmarkUsecase: GetManyBookmarksUsecase
+        private getManyBookmarkUsecase: GetManyBookmarksUsecase,
+        private getOneBookmarkUsecase: GetOneBookmarkUsecase,
+        private updateBookmarkUsecase: UpdateBookmarkUsecase,
+        private removeBookmarkUsecase: RemoveBookmarkUsecase
     ) {
     }
 
-    public create(bookmark: BookmarkRequest): Observable<BookmarkRequest> {
-        this.createBookmarkUsecase.execute(new Param(bookmark));
-        return of(bookmark);
+    public create(bookmark: BookmarkRequest): Observable<Result> {
+        return this.createBookmarkUsecase.execute(new Param(bookmark));
     }
 
     public getMany(): Observable<BookmarkRequest[]> {
-        const result = this.getManyBookmarkUsecase.execute(new NoParam());
-        return result;
+        return this.getManyBookmarkUsecase.execute(new NoParam());
     }
 
     public getOne(slug: string): Observable<BookmarkRequest> {
-        return of();
+        return this.getOneBookmarkUsecase.execute(new Param(slug));
     }
 
     public update(bookmark: BookmarkRequest): Observable<Result> {
-        return of();
+        return this.updateBookmarkUsecase.execute(new Param(bookmark));
     }
 
     public delete(slug: string): Observable<Result> {
-        return of();
+        return this.removeBookmarkUsecase.execute(new Param(slug));
     }
 
 }
