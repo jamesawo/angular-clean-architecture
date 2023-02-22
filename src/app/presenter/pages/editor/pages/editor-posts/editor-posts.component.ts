@@ -1,5 +1,5 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
 import { PostFormComponent, PostFormProps } from './../../components/post-form/post-form.component';
@@ -17,7 +17,7 @@ import { isFormInvalid, onHttpResponse, parseDate, updateTags } from '../../edit
     styles: [
     ]
 })
-export class EditorPostsComponent {
+export class EditorPostsComponent implements OnInit {
 
     public postTable: Table<PostRequest> = { cols: [{ title: 'Post Title' }] };
     public form: FormGroup = new FormGroup({});
