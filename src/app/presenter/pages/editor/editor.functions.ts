@@ -18,7 +18,7 @@ const parseDate = (value?: string) => {
 
 const updateTags = (form: FormGroup) => {
     const { tags } = form.value;
-    return tags.split(',') ?? []
+    return tags?.split(',') ?? []
 }
 
 const isFormInvalid = (form: FormGroup) => {
