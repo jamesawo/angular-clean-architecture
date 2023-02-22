@@ -32,12 +32,12 @@ import { Toast, ToastService, ToastType } from './toast.service';
 })
 export class ToastComponent implements OnInit {
 
-    public toastProps?: Observable<Toast>
+    public toast$?: Observable<Toast>
 
     public constructor(private toastService: ToastService) { }
 
     ngOnInit(): void {
-        this.toastProps = this.toastService.listen$;
+        this.toast$ = this.toastService.listen$;
     }
 
     public color(toastType: ToastType): string {

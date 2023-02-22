@@ -10,7 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { PresenterModule } from './presenter/presenter.module';
 import { AppComponent } from './app.component';
 import { DATA_BOOKMARK_IOC, DATA_POST_IOC, DATA_PROJECT_IOC } from './data/data.ioc';
-import { CommonModule } from '@angular/common';
+import { ToastService } from 'src/app/presenter/components/shared/toast/toast.service';
+
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { CommonModule } from '@angular/common';
     providers: [
         ...DATA_BOOKMARK_IOC,
         ...DATA_PROJECT_IOC,
-        ...DATA_POST_IOC
+        ...DATA_POST_IOC,
+        ToastService
     ],
     bootstrap: [AppComponent],
     exports: []

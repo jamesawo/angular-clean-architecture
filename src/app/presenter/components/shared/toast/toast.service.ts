@@ -21,7 +21,6 @@ export type Toast = {
 export class ToastService {
 
     public listen$: Observable<Toast>;
-
     private listen: BehaviorSubject<Toast>
     private options = { autoClose: true, location: 'top-right' };
 

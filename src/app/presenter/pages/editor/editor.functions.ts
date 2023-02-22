@@ -1,3 +1,4 @@
+import { Component, Type } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 
 import { Result } from './../../../core/types/types';
@@ -28,25 +29,31 @@ const isFormInvalid = (form: FormGroup) => {
     return false;
 }
 
-const onHttpResponse = async (response: Promise<Result>, toast: ToastService, loading?: boolean) => {
+const onHttpResponse = async (response: Promise<Result>, toast: ToastService) => {
     try {
         const value = await response;
-        value && value.acknowledged
-            ? showToast(toast, ToastType.success, 'Success', 'Action Successfully')
-            : showToast(toast, ToastType.error, 'Failed', 'Opps Action Failed');
+        if (value && value.acknowledged) {
+            showToast(toast, ToastType.success, 'Success', 'Action Successfully')
+        } else {
+            showToast(toast, ToastType.error, 'Failed', 'Opps Action Failed');
+        }
     } catch (error: any) {
         const { message } = error;
         showToast(toast, ToastType.error, 'Failed', message ?? 'Opps Action Failed');
-    } finally {
-        loading = false;
     }
 
 }
 
 const showToast = (toast: ToastService, type: ToastType, title: string, message: string) => {
-    console.log(toast);
-
     toast.show({ title, message, type });
 }
 
-export { isInvalidControl, parseDate, updateTags, isFormInvalid, onHttpResponse, showToast }
+
+export {
+    isInvalidControl,
+    parseDate,
+    updateTags,
+    isFormInvalid,
+    onHttpResponse,
+    showToast,
+}

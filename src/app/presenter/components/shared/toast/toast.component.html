@@ -1,4 +1,4 @@
-<ng-container *ngIf="toastProps | async as toast">
+<ng-container *ngIf="toast$ | async as toast">
     <div class="relative z-10" *ngIf="toast.isOpen === true" [@inOutAnimation]>
         <div class=" fixed flex flex-col justify-center top-10 right-10">
             <div class="{{color(toast.type!)}} shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block mb-3"

@@ -2,7 +2,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DarkThemeSwitchComponent } from './shared/theme-switcher/dark-theme-switch/dark-theme-switch.component';
 import { ThemeSwitcherService } from './shared/theme-switcher/theme-switcher.service';
-import { ToastService } from './shared/toast/toast.service';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ToastComponent } from './shared/toast/toast.component';
@@ -13,7 +12,6 @@ import { SkeletonLoaderComponent } from './shared/skeleton-loader/skeleton-loade
 import { BlogSkeletonComponent } from './shared/skeleton-loader/blog-skeleton/blog-skeleton.component';
 import { ProjectsSkeletonComponent } from './shared/skeleton-loader/projects-skeleton/projects-skeleton.component';
 import { BookmarksSkeletonComponent } from './shared/skeleton-loader/bookmarks-skeleton/bookmarks-skeleton.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { ThemeSwitcherComponent } from './shared/theme-switcher/theme-switcher.component';
 import { LightThemeSwitchComponent } from './shared/theme-switcher/light-theme-switch/light-theme-switch.component';
 import { TagComponent } from './shared/tag/tag.component';
@@ -72,6 +70,6 @@ import { FormFieldComponent } from './shared/form-field/form-field.component';
         FormsModule,
         ReactiveFormsModule
     ],
-    providers: [ToastService, ThemeSwitcherService]
+    providers: [ThemeSwitcherService]
 })
 export class ComponentModule { }
