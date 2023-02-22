@@ -1,3 +1,4 @@
+import { GetManyProjectUsecase } from 'src/app/domain/usecases/projects-usecases/get-many-project.usecase';
 import { HttpClient } from '@angular/common/http';
 import { GetOneProjectUsecase } from './../domain/usecases/projects-usecases/get-one-project.usecase';
 import { RemoveProjectUsecase } from './../domain/usecases/projects-usecases/remove-project.usecase';
@@ -68,7 +69,7 @@ export class DataProjectFactory {
     }
 
     public getGetManyProjectUsecase(repo: ProjectRepository) {
-        return new GetOneProjectUsecase(repo);
+        return new GetManyProjectUsecase(repo);
     }
 
 }
