@@ -1,1 +1,29 @@
-<p>project-form works!</p>
+<app-modal>
+    <form [formGroup]="defaultValue?.form!" (submit)="defaultValue?.action()">
+
+        <app-form-field
+            [props]="{ controlName: 'title', formGroup: defaultValue?.form!, isValid: isControlInValid }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'description', formGroup: defaultValue?.form!, isValid: isControlInValid }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'features', formGroup: defaultValue?.form!, isValid: isControlInValid }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'modules', formGroup: defaultValue?.form!, isValid: isControlInValid }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'industries', formGroup: defaultValue?.form!, isValid: isControlInValid }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'tools', formGroup: defaultValue?.form!, isValid: isControlInValid }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'imageUrl', formGroup: defaultValue?.form!, isValid: isControlInValid }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'actionTitle', formGroup: defaultValue?.form!, isValid: isControlInValid }"></app-form-field>
+        <app-form-field
+            [props]="{ controlName: 'actionLink', formGroup: defaultValue?.form!, isValid: isControlInValid }"></app-form-field>
+
+        <div class="relative flex w-full flex-wrap items-stretch mb-3">
+
+            <app-button [props]="{ loading: defaultValue?.isLoading }"></app-button>
+
+        </div>
+    </form>
+</app-modal>

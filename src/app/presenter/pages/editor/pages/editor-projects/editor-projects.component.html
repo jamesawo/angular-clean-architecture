@@ -1,1 +1,7 @@
-<p>editor-projects works!</p>
+<div class="mt-10">
+    <div class="w-full text-right">
+        <app-button [props]="{text:'+ Project'}" [action]="openModal"></app-button>
+    </div>
+
+    <app-table [payload]="tableData"></app-table>
+</div>
