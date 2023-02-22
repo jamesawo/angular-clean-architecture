@@ -25,14 +25,12 @@ export class ProjectInteractor implements IProjectInteractor {
     ) {
     }
 
-    public create(project: ProjectRequest): Observable<ProjectRequest> {
-        this.createProjectUsecase.execute(new Param(project));
-        return of(project);
+    public create(project: ProjectRequest): Observable<Result> {
+        return this.createProjectUsecase.execute(new Param(project));
     }
 
     public getMany(): Observable<ProjectRequest[]> {
-        const result = this.getManyProjectUsecase.execute(new NoParam());
-        return result;
+        return this.getManyProjectUsecase.execute(new NoParam());
     }
 
     public getOne(slug: string): Observable<ProjectRequest> {
