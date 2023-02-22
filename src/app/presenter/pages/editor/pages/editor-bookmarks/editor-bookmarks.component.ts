@@ -18,7 +18,7 @@ import { BookmarkRequest } from 'src/app/data/requests/bookmark.request';
     ]
 })
 export class EditorBookmarksComponent implements OnInit {
-    public tableData: Table<BookmarkRequest> = { cols: [{ title: 'Project Title' }] };
+    public tableData: Table<BookmarkRequest> = { cols: [{ title: 'Bookmark URL' }], alias: 'url' };
     public form: FormGroup = new FormGroup({});
     public isLoading = false;
 

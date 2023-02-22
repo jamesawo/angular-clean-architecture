@@ -32,5 +32,6 @@ export type Table<T> = {
 
     cols?: { title: string }[],
     data$?: Observable<T[]>,
-    action?: TableAction<T>
+    action?: TableAction<T>,
+    alias?: string
 }

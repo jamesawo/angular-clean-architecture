@@ -13,12 +13,21 @@
                 <tr *ngFor="let item of list"
                     class="flex  bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
 
-                    <ng-container *ngIf="item.title as title">
+                    <ng-container *ngIf="payload?.alias as alias; else itemTitle">
                         <th scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white truncate w-2/3">
-                            {{title }}
+                            {{item[alias] }}
                         </th>
                     </ng-container>
+
+                    <ng-template #itemTitle>
+                        <ng-container *ngIf="item.title as title">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white truncate w-2/3">
+                                {{title }}
+                            </th>
+                        </ng-container>
+                    </ng-template>
 
                     <ng-container *ngIf="item.date as date">
                         <td class="px-6 py-4">
