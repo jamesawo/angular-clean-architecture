@@ -1,3 +1,6 @@
+import { GetOneBookmarkUsecase } from './../domain/usecases/bookmark-usecases/get-one-bookmark.usecase';
+import { RemoveBookmarkUsecase } from './../domain/usecases/bookmark-usecases/remove-bookmark.usecase';
+import { UpdateBookmarkUsecase } from './../domain/usecases/bookmark-usecases/update-bookmark.usecase';
 import { HttpClient } from '@angular/common/http';
 import { Provider } from "@angular/core";
 import { GetManyPostUsecase } from './../domain/usecases/posts-usecases/get-many-posts.usecase';
@@ -17,7 +20,7 @@ import { UpdateProjectUsecase } from '../domain/usecases/projects-usecases/updat
 import { RemoveProjectUsecase } from '../domain/usecases/projects-usecases/remove-project.usecase';
 import { GetOneProjectUsecase } from '../domain/usecases/projects-usecases/get-one-project.usecase';
 
-const dataFactory = new DataBookmarkFactory();
+const bookmarkDataFactory = new DataBookmarkFactory();
 const postDataFactory = new DataPostFactory();
 const projectDataFactory = new DataProjectFactory()
 
@@ -25,20 +28,39 @@ export const DATA_BOOKMARK_IOC: Provider[] = [
     {
         deps: [HttpClient],
         provide: BookmarkRepository,
-        useFactory: (http: HttpClient) => dataFactory.getRepository(http)
+        useFactory: (http: HttpClient) => bookmarkDataFactory.getRepository(http)
     },
 
     {
         deps: [BookmarkRepository],
         provide: CreateBookmarkUsecase,
-        useFactory: (repository: BookmarkRepository) => dataFactory.getCreateBookmarkUsecase(repository),
+        useFactory: (repository: BookmarkRepository) => bookmarkDataFactory.getCreateBookmarkUsecase(repository),
     },
 
     {
         deps: [BookmarkRepository],
         provide: GetManyBookmarksUsecase,
-        useFactory: (repository: BookmarkRepository) => dataFactory.getManyBookmarkUsecase(repository),
+        useFactory: (repository: BookmarkRepository) => bookmarkDataFactory.getManyBookmarkUsecase(repository),
     },
+
+    {
+        deps: [BookmarkRepository],
+        provide: UpdateBookmarkUsecase,
+        useFactory: (repository: BookmarkRepository) => bookmarkDataFactory.getUpdateBookmarkUsecase(repository),
+    },
+
+    {
+        deps: [BookmarkRepository],
+        provide: RemoveBookmarkUsecase,
+        useFactory: (repository: BookmarkRepository) => bookmarkDataFactory.getRemoveBookmarkUsecase(repository),
+    },
+
+    {
+        deps: [BookmarkRepository],
+        provide: GetOneBookmarkUsecase,
+        useFactory: (repository: BookmarkRepository) => bookmarkDataFactory.getOneBookmarkUsecase(repository),
+    },
+
 ];
 
 export const DATA_POST_IOC: Provider[] = [
