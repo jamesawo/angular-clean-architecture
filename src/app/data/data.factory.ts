@@ -4,18 +4,18 @@ import { GetOneProjectUsecase } from './../domain/usecases/projects-usecases/get
 import { RemoveProjectUsecase } from './../domain/usecases/projects-usecases/remove-project.usecase';
 import { UpdateProjectUsecase } from './../domain/usecases/projects-usecases/update-project.usecase';
 import { CreateProjectUsecase } from './../domain/usecases/projects-usecases/create-project.usecase';
-import { ProjectRepository } from './datasources/remote/repo-implementations/project.repository';
+import { ProjectRepository } from './datasources/remote/repo-implementations/project/project.repository';
 import { GetManyPostUsecase } from './../domain/usecases/posts-usecases/get-many-posts.usecase';
 import { GetOnePostUsecase } from './../domain/usecases/posts-usecases/get-one-post.usecase';
 import { RemovePostUsecase } from './../domain/usecases/posts-usecases/remove-post.usecase';
 import { UpdatePostUsecase } from './../domain/usecases/posts-usecases/update-post.usecase';
 import { CreatePostUsecase } from './../domain/usecases/posts-usecases/create-post.usecase';
-import { PostRepository } from './datasources/remote/repo-implementations/post.repository';
+import { PostRepository } from './datasources/remote/repo-implementations/post/post.repository';
 import { UpdateBookmarkUsecase } from './../domain/usecases/bookmark-usecases/update-bookmark.usecase';
 import { RemoveBookmarkUsecase } from './../domain/usecases/bookmark-usecases/remove-bookmark.usecase';
 import { GetOneBookmarkUsecase } from './../domain/usecases/bookmark-usecases/get-one-bookmark.usecase';
 import { GetManyBookmarksUsecase } from './../domain/usecases/bookmark-usecases/get-many-bookmarks.usecase';
-import { BookmarkRepository } from "./datasources/remote/repo-implementations/bookmark.repository";
+import { BookmarkRepository } from "./datasources/remote/repo-implementations/bookmark/bookmark.repository";
 import { CreateBookmarkUsecase } from "../domain/usecases/bookmark-usecases/create-bookmark.usecase";
 
 export class DataBookmarkFactory {

@@ -10,10 +10,10 @@ import { UpdatePostUsecase } from './../domain/usecases/posts-usecases/update-po
 import { GetManyBookmarksUsecase } from './../domain/usecases/bookmark-usecases/get-many-bookmarks.usecase';
 import { DataBookmarkFactory, DataPostFactory, DataProjectFactory } from './data.factory';
 import { CreateBookmarkUsecase } from "../domain/usecases/bookmark-usecases/create-bookmark.usecase";
-import { BookmarkRepository } from './datasources/remote/repo-implementations/bookmark.repository';
-import { PostRepository } from './datasources/remote/repo-implementations/post.repository';
+import { BookmarkRepository } from './datasources/remote/repo-implementations/bookmark/bookmark.repository';
+import { PostRepository } from './datasources/remote/repo-implementations/post/post.repository';
 import { CreatePostUsecase } from '../domain/usecases/posts-usecases/create-post.usecase';
-import { ProjectRepository } from './datasources/remote/repo-implementations/project.repository';
+import { ProjectRepository } from './datasources/remote/repo-implementations/project/project.repository';
 import { CreateProjectUsecase } from '../domain/usecases/projects-usecases/create-project.usecase';
 import { GetManyProjectUsecase } from '../domain/usecases/projects-usecases/get-many-project.usecase';
 import { UpdateProjectUsecase } from '../domain/usecases/projects-usecases/update-project.usecase';
