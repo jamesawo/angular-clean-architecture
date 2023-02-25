@@ -24,7 +24,7 @@ export type TableData = {
 }
 
 type TableAction<T> = {
-    onRemove: (id: string) => void;
+    onRemove: (id: string, data?: T[]) => void;
     onEdit: (id: string, data?: T) => void;
 };
 

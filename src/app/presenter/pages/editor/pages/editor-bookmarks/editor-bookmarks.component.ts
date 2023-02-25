@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { firstValueFrom } from 'rxjs';
+import { first, firstValueFrom, merge, of, switchMap, takeLast } from 'rxjs';
 
 import { BookmarkInteractor } from 'src/app/data/interactors/implementations/bookmark.interactor';
 import { BookmarFormProps, BookmarkFormComponent } from './../../components/bookmark-form/bookmark-form.component';
 import { Table } from 'src/app/presenter/components/shared/table/table.component';
 import { ToastService } from 'src/app/presenter/components/shared/toast/toast.service';
 import { ModalService } from 'src/app/presenter/components/shared/modal/modal.service';
-import { isFormInvalid, joinShorts, onHttpResponse, parseDate, updateTags } from '../../editor.functions';
+import { isFormInvalid, joinShorts, onHttpResponse, parseDate, removeItemFromListIfStatus, updateTags } from '../../editor.functions';
 import { BookmarkRequest } from 'src/app/data/requests/bookmark.request';
 
 
@@ -51,14 +51,15 @@ export class EditorBookmarksComponent implements OnInit {
         );
     }
 
-    private onRemoveBookmark = (id: string): void => {
+    private onRemoveBookmark = async (id: string, bookmarks?: BookmarkRequest[]): Promise<void> => {
         const result: boolean = confirm('Are you sure?');
         if (id && result) {
             const response = firstValueFrom(this.bookmarkInteractor.delete(id));
-            onHttpResponse(response, this.toastService);
-            this.onRefreshComponent();
+            const status = await onHttpResponse(response, this.toastService);
+            removeItemFromListIfStatus(status.acknowledged, id, bookmarks);
         }
     }
+
 
     private onSaveBookmark = async () => {
         if (isFormInvalid(this.form)) return;
@@ -70,10 +71,11 @@ export class EditorBookmarksComponent implements OnInit {
             short: joinShorts(this.form)
         };
         const response = firstValueFrom(this.bookmarkInteractor.save(formValues));
-        await onHttpResponse(response, this.toastService);
-        this.modalService.close();
+        const result = await onHttpResponse(response, this.toastService, this.modalService);
         this.onRefreshComponent();
     }
+
+
 
     private setForm = (bookmark?: BookmarkRequest) => {
         this.isLoading = false;
@@ -84,7 +86,6 @@ export class EditorBookmarksComponent implements OnInit {
             url: new FormControl(bookmark?.url, [Validators.required]),
             date: new FormControl(parseDate(bookmark?.date), [Validators.required]),
         })
-
     }
 
     private getModalProps = (post: BookmarkRequest): BookmarFormProps => {

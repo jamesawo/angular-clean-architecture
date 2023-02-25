@@ -1,7 +1,10 @@
-import { Component, Type } from "@angular/core";
+import { ModalService } from 'src/app/presenter/components/shared/modal/modal.service';
+import { ProjectRequest } from 'src/app/data/requests/project.request';
+import { PostRequest } from 'src/app/data/requests/posts.request';
 import { FormGroup } from "@angular/forms";
 
 import { Result } from './../../../core/types/types';
+import { BookmarkRequest } from 'src/app/data/requests/bookmark.request';
 import { ToastService, ToastType } from './../../components/shared/toast/toast.service';
 
 const isInvalidControl = (controlName: string, form: FormGroup): boolean => {
@@ -49,23 +52,34 @@ const isFormInvalid = (form: FormGroup) => {
     return false;
 }
 
-const onHttpResponse = async (response: Promise<Result>, toast: ToastService) => {
+const onHttpResponse = async (response: Promise<Result>, toast: ToastService, modal?: ModalService<any, any>): Promise<Result> => {
+    const value = await response;
     try {
-        const value = await response;
         if (value && value.acknowledged) {
-            showToast(toast, ToastType.success, 'Success', 'Action Successfully')
+            showToast(toast, ToastType.success, 'Success', 'Action Successfully');
+            modal?.close();
         } else {
             showToast(toast, ToastType.error, 'Failed', 'Opps Action Failed');
         }
     } catch (error: any) {
         const { message } = error;
         showToast(toast, ToastType.error, 'Failed', message ?? 'Opps Action Failed');
+    } finally {
+        return value;
     }
 
 }
 
 const showToast = (toast: ToastService, type: ToastType, title: string, message: string) => {
     toast.show({ title, message, type });
+}
+
+
+const removeItemFromListIfStatus = (status: boolean, id: string, list?: BookmarkRequest[] | PostRequest[] | ProjectRequest[]): void => {
+    if (status && list && list.length) {
+        const index = list.findIndex(bookmark => bookmark._id === id);
+        list.splice(index, 1);
+    }
 }
 
 
@@ -78,5 +92,6 @@ export {
     showToast,
     joinShorts,
     splitText,
-    getActionLink
+    getActionLink,
+    removeItemFromListIfStatus
 }
