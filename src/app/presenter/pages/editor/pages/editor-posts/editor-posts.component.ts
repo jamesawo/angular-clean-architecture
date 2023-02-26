@@ -1,21 +1,19 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, from, map } from 'rxjs';
 
 import { PostFormComponent, PostFormProps } from './../../components/post-form/post-form.component';
 import { PostInteractor } from './../../../../../data/interactors/implementations/post.interactor';
 import { PostRequest } from './../../../../../data/requests/posts.request';
 import { Table } from 'src/app/presenter/components/shared/table/table.component';
-import { ToastService, ToastType } from 'src/app/presenter/components/shared/toast/toast.service';
+import { ToastService } from 'src/app/presenter/components/shared/toast/toast.service';
 import { ModalService } from 'src/app/presenter/components/shared/modal/modal.service';
-import { isFormInvalid, onHttpResponse, parseDate, updateTags } from '../../editor.functions';
+import { isFormInvalid, onHttpResponse, parseDate, removeItemFromListIfStatus, updateTags } from '../../editor.functions';
 
 
 @Component({
     selector: 'app-editor-posts',
     templateUrl: './editor-posts.component.html',
-    styles: [
-    ]
 })
 export class EditorPostsComponent implements OnInit {
 
@@ -52,12 +50,12 @@ export class EditorPostsComponent implements OnInit {
         );
     }
 
-    private onRemovePost = (id: string): void => {
-        const result: boolean = confirm('Are you sure?');
-        if (id && result) {
+    private onRemovePost = async (id: string, posts?: PostRequest[]): Promise<void> => {
+
+        if (id && confirm('Are you sure?')) {
             const response = firstValueFrom(this.postInteractor.delete(id));
-            onHttpResponse(response, this.toastService);
-            this.onRefreshComponent();
+            const status = await onHttpResponse(response, this.toastService);
+            removeItemFromListIfStatus(status.acknowledged, id, posts);
         }
     }
 
@@ -67,9 +65,9 @@ export class EditorPostsComponent implements OnInit {
         this.isLoading = true;
         const formValues: PostRequest = { ...this.form.value, tags: updateTags(this.form) };
         const response = firstValueFrom(this.postInteractor.savePost(formValues));
-        await onHttpResponse(response, this.toastService);
-        this.modalService.close();
-        this.onRefreshComponent();
+        await onHttpResponse(response, this.toastService, this.modalService);
+        this.postTable.data$ = from(this.postTable?.data$!.pipe(map((stream) => stream)));
+
     }
 
     private setForm = (data?: PostRequest) => {
@@ -91,9 +89,6 @@ export class EditorPostsComponent implements OnInit {
         return { form: this.form, action: this.onSavePost, data: post, isLoading: this.isLoading };
     }
 
-    private onRefreshComponent = () => {
-        setTimeout(() => this.ngOnInit()), 2000;
-    }
 
 }
 
