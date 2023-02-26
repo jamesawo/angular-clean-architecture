@@ -7,6 +7,7 @@ import { Result } from './../../../core/types/types';
 import { BookmarkRequest } from 'src/app/data/requests/bookmark.request';
 import { ToastService, ToastType } from './../../components/shared/toast/toast.service';
 
+
 const isInvalidControl = (controlName: string, form: FormGroup): boolean => {
     const control = form?.controls[controlName];
     return control?.touched == true && control?.status === 'INVALID';
@@ -52,7 +53,11 @@ const isFormInvalid = (form: FormGroup) => {
     return false;
 }
 
-const onHttpResponse = async (response: Promise<Result>, toast: ToastService, modal?: ModalService<any, any>): Promise<Result> => {
+const onHttpResponse = async (
+    response: Promise<Result>,
+    toast: ToastService,
+    modal?: ModalService<any, any>,
+): Promise<Result> => {
     const value = await response;
     try {
         if (value && value.acknowledged) {
@@ -93,5 +98,5 @@ export {
     joinShorts,
     splitText,
     getActionLink,
-    removeItemFromListIfStatus
+    removeItemFromListIfStatus,
 }

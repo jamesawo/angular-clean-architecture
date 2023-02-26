@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { first, firstValueFrom, merge, of, switchMap, takeLast } from 'rxjs';
+import { firstValueFrom, from, map } from 'rxjs';
 
 import { BookmarkInteractor } from 'src/app/data/interactors/implementations/bookmark.interactor';
 import { BookmarFormProps, BookmarkFormComponent } from './../../components/bookmark-form/bookmark-form.component';
@@ -66,16 +66,13 @@ export class EditorBookmarksComponent implements OnInit {
 
         this.isLoading = true;
         const formValues: BookmarkRequest = {
-            ...this.form.value,
-            tags: updateTags(this.form),
+            ...this.form.value, tags: updateTags(this.form),
             short: joinShorts(this.form)
         };
         const response = firstValueFrom(this.bookmarkInteractor.save(formValues));
-        const result = await onHttpResponse(response, this.toastService, this.modalService);
-        this.onRefreshComponent();
+        await onHttpResponse(response, this.toastService, this.modalService);
+        this.tableData.data$ = from(this.tableData?.data$!.pipe(map((stream) => stream)));
     }
-
-
 
     private setForm = (bookmark?: BookmarkRequest) => {
         this.isLoading = false;
@@ -93,7 +90,4 @@ export class EditorBookmarksComponent implements OnInit {
         return { form: this.form, action: this.onSaveBookmark, data: post, isLoading: this.isLoading };
     }
 
-    private onRefreshComponent = () => {
-        setTimeout(() => this.ngOnInit()), 2000;
-    }
 }
