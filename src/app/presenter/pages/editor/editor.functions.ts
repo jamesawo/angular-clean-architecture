@@ -1,11 +1,17 @@
+import { FormGroup } from "@angular/forms";
+
 import { ModalService } from 'src/app/presenter/components/shared/modal/modal.service';
 import { ProjectRequest } from 'src/app/data/requests/project.request';
 import { PostRequest } from 'src/app/data/requests/posts.request';
-import { FormGroup } from "@angular/forms";
+import { BookmarkRequest } from 'src/app/data/requests/bookmark.request';
+
+import { from, map, Observable } from 'rxjs';
 
 import { Result } from './../../../core/types/types';
-import { BookmarkRequest } from 'src/app/data/requests/bookmark.request';
 import { ToastService, ToastType } from './../../components/shared/toast/toast.service';
+
+type RequestArrUn = ProjectRequest[] | BookmarkRequest[] | PostRequest[];
+type RequestPayloadUn = ProjectRequest | BookmarkRequest | PostRequest;
 
 
 const isInvalidControl = (controlName: string, form: FormGroup): boolean => {
@@ -54,9 +60,7 @@ const isFormInvalid = (form: FormGroup) => {
 }
 
 const onHttpResponse = async (
-    response: Promise<Result>,
-    toast: ToastService,
-    modal?: ModalService<any, any>,
+    response: Promise<Result>, toast: ToastService, modal?: ModalService<any, any>
 ): Promise<Result> => {
     const value = await response;
     try {
@@ -80,13 +84,19 @@ const showToast = (toast: ToastService, type: ToastType, title: string, message:
 }
 
 
-const removeItemFromListIfStatus = (status: boolean, id: string, list?: BookmarkRequest[] | PostRequest[] | ProjectRequest[]): void => {
+const removeItemFromListIfStatus = (status: boolean, id: string, list?: RequestArrUn): void => {
     if (status && list && list.length) {
         const index = list.findIndex(bookmark => bookmark._id === id);
         list.splice(index, 1);
     }
 }
 
+const appendToObservableListIfStatus = (source: Observable<any>, item: RequestPayloadUn, result: Result): Observable<any> => {
+    if (result.acknowledged === true) {
+        return from(source!.pipe(map((list) => [{ ...item, _id: result.insertedId }, ...list])));
+    }
+    return source;
+}
 
 export {
     isInvalidControl,
@@ -99,4 +109,5 @@ export {
     splitText,
     getActionLink,
     removeItemFromListIfStatus,
+    appendToObservableListIfStatus
 }
