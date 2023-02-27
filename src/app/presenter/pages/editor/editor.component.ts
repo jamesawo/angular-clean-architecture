@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { PageSeoService } from '../page-seo.service';
 
@@ -8,14 +8,14 @@ import { PageSeoService } from '../page-seo.service';
     styles: [
     ]
 })
-export class EditorComponent {
+export class EditorComponent implements OnInit {
 
     constructor(
         private seoService: PageSeoService,
     ) { }
 
     ngOnInit(): void {
-        this.seoService.setSEO({ pageTitle: 'Editors Tab - Portfolio', });
+        this.seoService.setSEO();
     }
 
 

@@ -37,7 +37,7 @@ export class PageSeoService {
         const keywords = `${data?.pageKeywords ?? 'programming, fullstack engineering, java, typescript, blogging'}`;
         const pageUrl = `${data?.pageUrl ?? 'https://jamesaworo.com/'}`;
 
-        this.title.setTitle(`${pageTitle} - ${author} website`);
+        this.title.setTitle(`${author} | ${pageTitle}`);
         this.meta.updateTag({ name: 'author', content: author })
         this.meta.updateTag({ name: 'description', content: description })
         this.meta.updateTag({ name: 'keywords', content: keywords })
