@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { firstValueFrom, from, map } from 'rxjs';
+
+import { firstValueFrom, shareReplay } from 'rxjs';
 
 import { BookmarkInteractor } from 'src/app/data/interactors/implementations/bookmark.interactor';
-import { BookmarFormProps, BookmarkFormComponent } from './../../components/bookmark-form/bookmark-form.component';
 import { Table } from 'src/app/presenter/components/shared/table/table.component';
 import { ToastService } from 'src/app/presenter/components/shared/toast/toast.service';
 import { ModalService } from 'src/app/presenter/components/shared/modal/modal.service';
-import { isFormInvalid, joinShorts, onHttpResponse, parseDate, removeItemFromListIfStatus, updateTags } from '../../editor.functions';
 import { BookmarkRequest } from 'src/app/data/requests/bookmark.request';
+
+import { appendToObservableListIfStatus, isFormInvalid, joinShorts, onHttpResponse, parseDate, removeItemFromListIfStatus, updateTags } from '../../editor.functions';
+import { BookmarFormProps, BookmarkFormComponent } from './../../components/bookmark-form/bookmark-form.component';
 
 
 @Component({
@@ -34,7 +36,7 @@ export class EditorBookmarksComponent implements OnInit {
 
     public setTableData = () => {
         this.tableData.action = { onEdit: this.onEditPost, onRemove: this.onRemoveBookmark }
-        this.tableData.data$ = this.bookmarkInteractor.getMany();
+        this.tableData.data$ = this.bookmarkInteractor.getMany().pipe(shareReplay());
     }
 
     public openModal = async (): Promise<void> => {
@@ -60,18 +62,17 @@ export class EditorBookmarksComponent implements OnInit {
         }
     }
 
-
     private onSaveBookmark = async () => {
         if (isFormInvalid(this.form)) return;
 
         this.isLoading = true;
-        const formValues: BookmarkRequest = {
+        const bookmark: BookmarkRequest = {
             ...this.form.value, tags: updateTags(this.form),
             short: joinShorts(this.form)
         };
-        const response = firstValueFrom(this.bookmarkInteractor.save(formValues));
-        await onHttpResponse(response, this.toastService, this.modalService);
-        this.tableData.data$ = from(this.tableData?.data$!.pipe(map((stream) => stream)));
+        const response = firstValueFrom(this.bookmarkInteractor.save(bookmark));
+        const result = await onHttpResponse(response, this.toastService, this.modalService);
+        this.tableData.data$ = appendToObservableListIfStatus(this.tableData.data$!, bookmark, result);
     }
 
     private setForm = (bookmark?: BookmarkRequest) => {

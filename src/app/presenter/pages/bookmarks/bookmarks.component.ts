@@ -1,8 +1,11 @@
-import { PageSeoService } from './../page-seo.service';
+import { Component, OnInit } from '@angular/core';
+
+import { Observable } from 'rxjs';
+
 import { BookmarkInteractor } from 'src/app/data/interactors/implementations/bookmark.interactor';
 import { BookmarkRequest } from 'src/app/data/requests/bookmark.request';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+
+import { PageSeoService } from './../page-seo.service';
 import { PageEnum } from '../../components/shared/skeleton-loader/skeleton-loader.component';
 
 @Component({
