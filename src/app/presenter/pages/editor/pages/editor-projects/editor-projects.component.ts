@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, from, map } from 'rxjs';
 
 import { ProjectFormComponent, ProjectFormProps } from './../../components/project-form/project-form.component';
 import { ProjectInteractor } from './../../../../../data/interactors/implementations/project.interactor';
@@ -8,7 +8,7 @@ import { ProjectRequest } from 'src/app/data/requests/project.request';
 import { Table } from 'src/app/presenter/components/shared/table/table.component';
 import { ToastService } from 'src/app/presenter/components/shared/toast/toast.service';
 import { ModalService } from 'src/app/presenter/components/shared/modal/modal.service';
-import { getActionLink, isFormInvalid, onHttpResponse, splitText, updateTags } from '../../editor.functions';
+import { getActionLink, isFormInvalid, onHttpResponse, removeItemFromListIfStatus, splitText, updateTags } from '../../editor.functions';
 
 
 @Component({
@@ -52,12 +52,12 @@ export class EditorProjectsComponent implements OnInit {
         );
     }
 
-    private onRemoveProject = (id: string): void => {
+    private onRemoveProject = async (id: string, projects?: ProjectRequest[]): Promise<void> => {
         const result: boolean = confirm('Are you sure?');
         if (id && result) {
             const response = firstValueFrom(this.projectInteractor.delete(id));
-            onHttpResponse(response, this.toastService);
-            this.onRefreshComponent();
+            const status = await onHttpResponse(response, this.toastService);
+            removeItemFromListIfStatus(status.acknowledged, id, projects);
         }
     }
 
@@ -76,9 +76,8 @@ export class EditorProjectsComponent implements OnInit {
 
 
         const response = firstValueFrom(this.projectInteractor.save(formValues));
-        await onHttpResponse(response, this.toastService);
-        this.modalService.close();
-        this.onRefreshComponent();
+        await onHttpResponse(response, this.toastService, this.modalService);
+        this.tableData.data$ = from(this.tableData?.data$!.pipe(map((stream) => stream)));
     }
 
     private setForm = (project?: ProjectRequest) => {
@@ -102,9 +101,5 @@ export class EditorProjectsComponent implements OnInit {
     private getModalProps = (post: ProjectRequest): ProjectFormProps => {
         this.setForm(post);
         return { form: this.form, action: this.onSaveProject, data: post, isLoading: this.isLoading };
-    }
-
-    private onRefreshComponent = () => {
-        setTimeout(() => this.ngOnInit()), 2000;
     }
 }

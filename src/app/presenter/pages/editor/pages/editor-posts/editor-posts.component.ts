@@ -65,9 +65,9 @@ export class EditorPostsComponent implements OnInit {
         this.isLoading = true;
         const formValues: PostRequest = { ...this.form.value, tags: updateTags(this.form) };
         const response = firstValueFrom(this.postInteractor.savePost(formValues));
+
         await onHttpResponse(response, this.toastService, this.modalService);
         this.postTable.data$ = from(this.postTable?.data$!.pipe(map((stream) => stream)));
-
     }
 
     private setForm = (data?: PostRequest) => {

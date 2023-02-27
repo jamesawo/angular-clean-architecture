@@ -45,7 +45,7 @@ export class PostInteractor implements IPostInteractor {
     }
 
     public update(post: PostRequest): Observable<Result> {
-        return this.updatePostUsecase.execute(new Param(post));
+        return this.updatePostUsecase.execute(new Param({ ...post, id: post._id }));
     }
 
     public delete(slug: string): Observable<Result> {

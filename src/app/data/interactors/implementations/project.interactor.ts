@@ -20,7 +20,7 @@ export class ProjectInteractor implements IProjectInteractor {
         private getOneProjectUsecase: GetOneProjectUsecase,
         private getManyProjectUsecase: GetManyProjectUsecase,
         private removeProjectUsecase: RemoveProjectUsecase,
-        private UpdateProjectUsecase: UpdateProjectUsecase,
+        private updateProjectUsecase: UpdateProjectUsecase,
         private createProjectUsecase: CreateProjectUsecase
     ) {
     }
@@ -44,7 +44,7 @@ export class ProjectInteractor implements IProjectInteractor {
     }
 
     public update(project: ProjectRequest): Observable<Result> {
-        return this.UpdateProjectUsecase.execute(new Param(project));
+        return this.updateProjectUsecase.execute(new Param({ ...project, id: project._id }));
     }
 
     public delete(slug: string): Observable<Result> {
