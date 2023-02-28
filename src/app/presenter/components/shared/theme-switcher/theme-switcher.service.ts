@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+
 import { BehaviorSubject, Observable } from "rxjs";
 
 
@@ -22,7 +23,7 @@ export class ThemeSwitcherService {
         }
     }
 
-    public getThemePref(): string {
+    private getThemePref(): string {
         const localPref = localStorage.getItem(this.prefKey);
         return localPref || this.pref?.value;
     }
