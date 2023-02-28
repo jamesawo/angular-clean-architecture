@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
+
 import { Observable } from "rxjs";
+
 import { Result } from 'src/app/core/types/types';
+
 import { BookmarkEntity } from "../entities";
 
 @Injectable({ providedIn: 'root' })
