@@ -15,29 +15,24 @@ export class ProjectRepository implements IProjectRepository {
 
     all(): Observable<ProjectEntity[]> {
         return this.http
-            .get<{ data: ProjectEntity[] }>(`${this.baseUrl}`)
-            .pipe(map(x => x.data));
+            .get<ProjectEntity[]>(`${this.baseUrl}`);
     }
 
     createProject(project: ProjectEntity): Observable<Result> {
-        return this.http.post<{ data: Result }>(`${this.baseUrl}`, project)
-            .pipe(map(x => x.data));
+        return this.http.post<Result>(`${this.baseUrl}`, project);
     }
 
     getProject(id: string): Observable<ProjectEntity> {
         return this.http
-            .get<{ data: ProjectEntity }>(`${this.baseUrl}?id=${id}`)
-            .pipe(map(x => x.data));
+            .get<ProjectEntity>(`${this.baseUrl}?id=${id}`);
     }
 
     updateProject(id: string, project: ProjectEntity): Observable<Result> {
-        return this.http.put<{ data: Result }>(`${this.baseUrl}?projectId=${id}`, project)
-            .pipe(map(x => x.data));
+        return this.http.put<Result>(`${this.baseUrl}?projectId=${id}`, project);
     }
 
     removeProject(id: string): Observable<Result> {
-        return this.http.delete<{ data: Result }>(`${this.baseUrl}?projectId=${id}`)
-            .pipe(map(x => x.data));
+        return this.http.delete<Result>(`${this.baseUrl}?projectId=${id}`);
     }
 
 }

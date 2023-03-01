@@ -100,7 +100,6 @@ describe(('PostRepository'), () => {
             repository.createPost(post);
             const argArry = repository.createPost.calls.argsFor(0);
 
-            debugger;
             expect(argArry[0]).toEqual(post);
             expect(argArry[0]).toEqual(jasmine.objectContaining(post));
         });
