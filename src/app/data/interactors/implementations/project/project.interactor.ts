@@ -6,11 +6,11 @@ import { Param } from 'src/app/core/params/param.payload';
 import { NoParam } from 'src/app/core/params/no-param.paylod';
 import { ProjectRequest } from '../../../requests/project.request';
 import { IProjectInteractor } from '../../contracts/iproject.interactor';
-import { GetOneProjectUsecase } from 'src/app/domain/usecases/projects-usecases/get-one-project.usecase';
-import { GetManyProjectUsecase } from 'src/app/domain/usecases/projects-usecases/get-many-project.usecase';
-import { RemoveProjectUsecase } from 'src/app/domain/usecases/projects-usecases/remove-project.usecase';
-import { CreateProjectUsecase } from 'src/app/domain/usecases/projects-usecases/create-project.usecase';
-import { UpdateProjectUsecase } from '../../../../domain/usecases/projects-usecases/update-project.usecase';
+import { GetOneProjectUsecase } from 'src/app/domain/usecases/projects-usecases/get-one-usecase/get-one-project.usecase';
+import { GetManyProjectUsecase } from 'src/app/domain/usecases/projects-usecases/get-many-usecase/get-many-project.usecase';
+import { RemoveProjectUsecase } from 'src/app/domain/usecases/projects-usecases/remove-usecase/remove-project.usecase';
+import { CreateProjectUsecase } from 'src/app/domain/usecases/projects-usecases/create-usecase/create-project.usecase';
+import { UpdateProjectUsecase } from '../../../../domain/usecases/projects-usecases/update-usecase/update-project.usecase';
 
 
 @Injectable({ providedIn: 'root' })

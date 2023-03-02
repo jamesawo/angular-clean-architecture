@@ -18,11 +18,11 @@ import { BookmarkRepository } from './datasources/remote/repo-implementations/bo
 import { PostRepository } from './datasources/remote/repo-implementations/post/post.repository';
 import { CreatePostUsecase } from '../domain/usecases/posts-usecases/create-usecase/create-post.usecase';
 import { ProjectRepository } from './datasources/remote/repo-implementations/project/project.repository';
-import { CreateProjectUsecase } from '../domain/usecases/projects-usecases/create-project.usecase';
-import { GetManyProjectUsecase } from '../domain/usecases/projects-usecases/get-many-project.usecase';
-import { UpdateProjectUsecase } from '../domain/usecases/projects-usecases/update-project.usecase';
-import { RemoveProjectUsecase } from '../domain/usecases/projects-usecases/remove-project.usecase';
-import { GetOneProjectUsecase } from '../domain/usecases/projects-usecases/get-one-project.usecase';
+import { CreateProjectUsecase } from '../domain/usecases/projects-usecases/create-usecase/create-project.usecase';
+import { GetManyProjectUsecase } from '../domain/usecases/projects-usecases/get-many-usecase/get-many-project.usecase';
+import { UpdateProjectUsecase } from '../domain/usecases/projects-usecases/update-usecase/update-project.usecase';
+import { RemoveProjectUsecase } from '../domain/usecases/projects-usecases/remove-usecase/remove-project.usecase';
+import { GetOneProjectUsecase } from '../domain/usecases/projects-usecases/get-one-usecase/get-one-project.usecase';
 import { BookmarkInteractor } from './interactors/implementations/bookmark/bookmark.interactor';
 
 

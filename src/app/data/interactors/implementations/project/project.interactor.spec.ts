@@ -3,11 +3,11 @@ import { NoParam } from 'src/app/core/params/no-param.paylod';
 import { Param } from 'src/app/core/params/param.payload';
 import { MOCK_PROJECT } from 'src/app/data/datasources/remote/repo-implementations/project/project.repository.spec';
 import { ProjectRequest } from 'src/app/data/requests/project.request';
-import { CreateProjectUsecase } from "src/app/domain/usecases/projects-usecases/create-project.usecase";
-import { GetManyProjectUsecase } from "src/app/domain/usecases/projects-usecases/get-many-project.usecase";
-import { GetOneProjectUsecase } from "src/app/domain/usecases/projects-usecases/get-one-project.usecase";
-import { RemoveProjectUsecase } from "src/app/domain/usecases/projects-usecases/remove-project.usecase";
-import { UpdateProjectUsecase } from "src/app/domain/usecases/projects-usecases/update-project.usecase";
+import { CreateProjectUsecase } from "src/app/domain/usecases/projects-usecases/create-usecase/create-project.usecase";
+import { GetManyProjectUsecase } from "src/app/domain/usecases/projects-usecases/get-many-usecase/get-many-project.usecase";
+import { GetOneProjectUsecase } from "src/app/domain/usecases/projects-usecases/get-one-usecase/get-one-project.usecase";
+import { RemoveProjectUsecase } from "src/app/domain/usecases/projects-usecases/remove-usecase/remove-project.usecase";
+import { UpdateProjectUsecase } from "src/app/domain/usecases/projects-usecases/update-usecase/update-project.usecase";
 import { IProjectInteractor } from '../../contracts/iproject.interactor';
 import { ProjectInteractor } from "./project.interactor";
 
