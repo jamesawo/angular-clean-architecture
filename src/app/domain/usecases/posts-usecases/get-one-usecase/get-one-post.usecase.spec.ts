@@ -8,7 +8,7 @@ import { MOCK_POSTS } from '../../../../data/datasources/remote/repo-implementat
 
 import { GetOnePostUsecase } from './get-one-post.usecase';
 
-fdescribe('GetOnePostUsecase', () => {
+describe('GetOnePostUsecase', () => {
     let usecase: GetOnePostUsecase;
     let iPostRepository: jasmine.SpyObj<IPostRepository>;
     let post: PostEntity;
