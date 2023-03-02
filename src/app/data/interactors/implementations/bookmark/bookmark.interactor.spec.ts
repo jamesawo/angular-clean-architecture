@@ -148,7 +148,7 @@ describe('BookmarkInteractor', () => {
     })
 
     describe('getOne', () => {
-        it('should receive a id of string as input', () => {
+        it('should receive an id of string as input', () => {
             let interactor: jasmine.SpyObj<BookmarkInteractor> = jasmine.createSpyObj(BookmarkInteractor, ['getOne']);
 
             interactor.getOne(bookmark.id!);

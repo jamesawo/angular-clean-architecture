@@ -6,7 +6,7 @@ import { PostEntity } from 'src/app/domain/entities';
 
 import { PostRepository } from "./post.repository";
 
-const MOCK_POSTS: PostEntity[] = [
+export const MOCK_POSTS: PostEntity[] = [
     {
         "id": "63fbd9ad06fa5e3704bc8359",
         "title": "Edited Post Title",
