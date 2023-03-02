@@ -13,7 +13,6 @@ import { GetOnePostUsecase } from './../domain/usecases/posts-usecases/get-one-p
 import { RemovePostUsecase } from './../domain/usecases/posts-usecases/remove-post.usecase';
 import { UpdatePostUsecase } from './../domain/usecases/posts-usecases/update-post.usecase';
 import { GetManyBookmarksUsecase } from '../domain/usecases/bookmark-usecases/get-many-usecase/get-many-bookmarks.usecase';
-import { DataBookmarkFactory, DataPostFactory, DataProjectFactory } from './data.factory';
 import { CreateBookmarkUsecase } from "../domain/usecases/bookmark-usecases/create-usecase/create-bookmark.usecase";
 import { BookmarkRepository } from './datasources/remote/repo-implementations/bookmark/bookmark.repository';
 import { PostRepository } from './datasources/remote/repo-implementations/post/post.repository';
@@ -26,9 +25,6 @@ import { RemoveProjectUsecase } from '../domain/usecases/projects-usecases/remov
 import { GetOneProjectUsecase } from '../domain/usecases/projects-usecases/get-one-project.usecase';
 import { BookmarkInteractor } from './interactors/implementations/bookmark/bookmark.interactor';
 
-const bookmarkDataFactory = new DataBookmarkFactory();
-const postDataFactory = new DataPostFactory();
-const projectDataFactory = new DataProjectFactory()
 
 export const DATA_BOOKMARK_IOC: Provider[] = [
     {
@@ -38,37 +34,37 @@ export const DATA_BOOKMARK_IOC: Provider[] = [
     {
         deps: [HttpClient],
         provide: BookmarkRepository,
-        useFactory: (http: HttpClient) => bookmarkDataFactory.getRepository(http)
+        useFactory: (http: HttpClient) => new BookmarkRepository(http)
     },
 
     {
         deps: [BookmarkRepository],
         provide: CreateBookmarkUsecase,
-        useFactory: (repository: BookmarkRepository) => bookmarkDataFactory.getCreateBookmarkUsecase(repository),
+        useFactory: (repository: BookmarkRepository) => new GetManyBookmarksUsecase(repository),
     },
 
     {
         deps: [BookmarkRepository],
         provide: GetManyBookmarksUsecase,
-        useFactory: (repository: BookmarkRepository) => bookmarkDataFactory.getManyBookmarkUsecase(repository),
+        useFactory: (repository: BookmarkRepository) => new GetManyBookmarksUsecase(repository),
     },
 
     {
         deps: [BookmarkRepository],
         provide: UpdateBookmarkUsecase,
-        useFactory: (repository: BookmarkRepository) => bookmarkDataFactory.getUpdateBookmarkUsecase(repository),
+        useFactory: (repository: BookmarkRepository) => new UpdateBookmarkUsecase(repository),
     },
 
     {
         deps: [BookmarkRepository],
         provide: RemoveBookmarkUsecase,
-        useFactory: (repository: BookmarkRepository) => bookmarkDataFactory.getRemoveBookmarkUsecase(repository),
+        useFactory: (repository: BookmarkRepository) => new RemoveBookmarkUsecase(repository),
     },
 
     {
         deps: [BookmarkRepository],
         provide: GetOneBookmarkUsecase,
-        useFactory: (repository: BookmarkRepository) => bookmarkDataFactory.getOneBookmarkUsecase(repository),
+        useFactory: (repository: BookmarkRepository) => new GetOneBookmarkUsecase(repository),
     },
 
 ];
@@ -81,37 +77,37 @@ export const DATA_POST_IOC: Provider[] = [
     {
         deps: [HttpClient],
         provide: PostRepository,
-        useFactory: (http: HttpClient) => postDataFactory.getRepository(http)
+        useFactory: (http: HttpClient) => new PostRepository(http)
     },
 
     {
         deps: [PostRepository],
         provide: GetManyPostUsecase,
-        useFactory: (repository: PostRepository) => postDataFactory.getManyPostsUsecase(repository),
+        useFactory: (repository: PostRepository) => new GetManyPostUsecase(repository),
     },
 
     {
         deps: [PostRepository],
         provide: CreatePostUsecase,
-        useFactory: (repository: PostRepository) => postDataFactory.getCreatePostUsecase(repository),
+        useFactory: (repository: PostRepository) => new CreatePostUsecase(repository),
     },
 
     {
         deps: [PostRepository],
         provide: UpdatePostUsecase,
-        useFactory: (repository: PostRepository) => postDataFactory.getUpdatePostUsecase(repository),
+        useFactory: (repository: PostRepository) => new UpdatePostUsecase(repository),
     },
 
     {
         deps: [PostRepository],
         provide: RemovePostUsecase,
-        useFactory: (repository: PostRepository) => postDataFactory.getRemovePostUsecase(repository),
+        useFactory: (repository: PostRepository) => new RemovePostUsecase(repository),
     },
 
     {
         deps: [PostRepository],
         provide: GetOnePostUsecase,
-        useFactory: (repository: PostRepository) => postDataFactory.getGetOnePostUsecase(repository),
+        useFactory: (repository: PostRepository) => new GetOnePostUsecase(repository),
     },
 ];
 
@@ -123,36 +119,36 @@ export const DATA_PROJECT_IOC: Provider[] = [
     {
         deps: [HttpClient],
         provide: ProjectRepository,
-        useFactory: (http: HttpClient) => projectDataFactory.getRepository(http)
+        useFactory: (http: HttpClient) => new ProjectRepository(http)
     },
 
     {
         deps: [ProjectRepository],
         provide: GetManyProjectUsecase,
-        useFactory: (repository: ProjectRepository) => projectDataFactory.getGetManyProjectUsecase(repository),
+        useFactory: (repository: ProjectRepository) => new GetManyProjectUsecase(repository),
     },
 
     {
         deps: [ProjectRepository],
         provide: CreateProjectUsecase,
-        useFactory: (repository: ProjectRepository) => projectDataFactory.getCreateProjectUsecase(repository),
+        useFactory: (repository: ProjectRepository) => new CreateProjectUsecase(repository),
     },
 
     {
         deps: [ProjectRepository],
         provide: UpdateProjectUsecase,
-        useFactory: (repository: ProjectRepository) => projectDataFactory.getUpdateProjectUsecase(repository),
+        useFactory: (repository: ProjectRepository) => new UpdateProjectUsecase(repository),
     },
 
     {
         deps: [ProjectRepository],
         provide: RemoveProjectUsecase,
-        useFactory: (repository: ProjectRepository) => projectDataFactory.getRemoveProjectUsecase(repository),
+        useFactory: (repository: ProjectRepository) => new RemoveProjectUsecase(repository),
     },
 
     {
         deps: [ProjectRepository],
         provide: GetOneProjectUsecase,
-        useFactory: (repository: ProjectRepository) => projectDataFactory.getGetOneProjectUsecase(repository),
+        useFactory: (repository: ProjectRepository) => new GetOneProjectUsecase(repository),
     },
 ];
