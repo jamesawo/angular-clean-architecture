@@ -11,12 +11,12 @@ import { RemovePostUsecase } from './../domain/usecases/posts-usecases/remove-po
 import { UpdatePostUsecase } from './../domain/usecases/posts-usecases/update-post.usecase';
 import { CreatePostUsecase } from './../domain/usecases/posts-usecases/create-post.usecase';
 import { PostRepository } from './datasources/remote/repo-implementations/post/post.repository';
-import { UpdateBookmarkUsecase } from './../domain/usecases/bookmark-usecases/update-bookmark.usecase';
-import { RemoveBookmarkUsecase } from './../domain/usecases/bookmark-usecases/remove-bookmark.usecase';
-import { GetOneBookmarkUsecase } from './../domain/usecases/bookmark-usecases/get-one-bookmark.usecase';
-import { GetManyBookmarksUsecase } from './../domain/usecases/bookmark-usecases/get-many-bookmarks.usecase';
+import { UpdateBookmarkUsecase } from '../domain/usecases/bookmark-usecases/update-usecase/update-bookmark.usecase';
+import { RemoveBookmarkUsecase } from '../domain/usecases/bookmark-usecases/remove-usecase/remove-bookmark.usecase';
+import { GetOneBookmarkUsecase } from '../domain/usecases/bookmark-usecases/get-one-usecase/get-one-bookmark.usecase';
+import { GetManyBookmarksUsecase } from '../domain/usecases/bookmark-usecases/get-many-usecase/get-many-bookmarks.usecase';
 import { BookmarkRepository } from "./datasources/remote/repo-implementations/bookmark/bookmark.repository";
-import { CreateBookmarkUsecase } from "../domain/usecases/bookmark-usecases/create-bookmark.usecase";
+import { CreateBookmarkUsecase } from "../domain/usecases/bookmark-usecases/create-usecase/create-bookmark.usecase";
 
 export class DataBookmarkFactory {
 

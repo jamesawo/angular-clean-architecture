@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { firstValueFrom, from, map } from 'rxjs';
 
 import { PostFormComponent, PostFormProps } from './../../components/post-form/post-form.component';
-import { PostInteractor } from './../../../../../data/interactors/implementations/post.interactor';
+import { PostInteractor } from '../../../../../data/interactors/implementations/post/post.interactor';
 import { PostRequest } from './../../../../../data/requests/posts.request';
 import { Table } from 'src/app/presenter/components/shared/table/table.component';
 import { ToastService } from 'src/app/presenter/components/shared/toast/toast.service';

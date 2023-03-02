@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { BookmarkInteractor } from 'src/app/data/interactors/implementations/bookmark.interactor';
+import { BookmarkInteractor } from 'src/app/data/interactors/implementations/bookmark/bookmark.interactor';
 import { BookmarkRequest } from 'src/app/data/requests/bookmark.request';
 
 import { PageSeoService } from './../page-seo.service';

@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { Result } from '../../../core/types/types';
+import { Result } from '../../../../core/types/types';
 import { Param } from 'src/app/core/params/param.payload';
 import { NoParam } from 'src/app/core/params/no-param.paylod';
-import { ProjectRequest } from '../../requests/project.request';
-import { IProjectInteractor } from '../contracts/iproject.interactor';
+import { ProjectRequest } from '../../../requests/project.request';
+import { IProjectInteractor } from '../../contracts/iproject.interactor';
 import { GetOneProjectUsecase } from 'src/app/domain/usecases/projects-usecases/get-one-project.usecase';
 import { GetManyProjectUsecase } from 'src/app/domain/usecases/projects-usecases/get-many-project.usecase';
 import { RemoveProjectUsecase } from 'src/app/domain/usecases/projects-usecases/remove-project.usecase';
 import { CreateProjectUsecase } from 'src/app/domain/usecases/projects-usecases/create-project.usecase';
-import { UpdateProjectUsecase } from './../../../domain/usecases/projects-usecases/update-project.usecase';
+import { UpdateProjectUsecase } from '../../../../domain/usecases/projects-usecases/update-project.usecase';
 
 
 @Injectable({ providedIn: 'root' })
-export class ProjectInteractor implements IProjectInteractor {
+export class ProjectInteractor extends IProjectInteractor {
 
     constructor(
         private getOneProjectUsecase: GetOneProjectUsecase,
@@ -23,6 +23,7 @@ export class ProjectInteractor implements IProjectInteractor {
         private updateProjectUsecase: UpdateProjectUsecase,
         private createProjectUsecase: CreateProjectUsecase
     ) {
+        super();
     }
 
     public save(project: ProjectRequest): Observable<Result> {

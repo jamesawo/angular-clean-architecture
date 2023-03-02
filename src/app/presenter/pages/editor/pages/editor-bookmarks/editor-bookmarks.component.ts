@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { firstValueFrom, shareReplay } from 'rxjs';
 
-import { BookmarkInteractor } from 'src/app/data/interactors/implementations/bookmark.interactor';
+import { BookmarkInteractor } from 'src/app/data/interactors/implementations/bookmark/bookmark.interactor';
 import { Table } from 'src/app/presenter/components/shared/table/table.component';
 import { ToastService } from 'src/app/presenter/components/shared/toast/toast.service';
 import { ModalService } from 'src/app/presenter/components/shared/modal/modal.service';

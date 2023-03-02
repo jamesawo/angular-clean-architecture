@@ -10,7 +10,7 @@ import { ModalService } from 'src/app/presenter/components/shared/modal/modal.se
 
 import { appendToObservableListIfStatus, getActionLink, isFormInvalid, onHttpResponse, removeItemFromListIfStatus, splitText } from '../../editor.functions';
 import { ProjectFormComponent, ProjectFormProps } from './../../components/project-form/project-form.component';
-import { ProjectInteractor } from './../../../../../data/interactors/implementations/project.interactor';
+import { ProjectInteractor } from '../../../../../data/interactors/implementations/project/project.interactor';
 
 
 @Component({

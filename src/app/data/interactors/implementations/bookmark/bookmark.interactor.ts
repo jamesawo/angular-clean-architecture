@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { RemoveBookmarkUsecase } from './../../../domain/usecases/bookmark-usecases/remove-bookmark.usecase';
-import { UpdateBookmarkUsecase } from './../../../domain/usecases/bookmark-usecases/update-bookmark.usecase';
-import { GetOneBookmarkUsecase } from './../../../domain/usecases/bookmark-usecases/get-one-bookmark.usecase';
-import { GetManyBookmarksUsecase } from './../../../domain/usecases/bookmark-usecases/get-many-bookmarks.usecase';
-import { Result } from './../../../core/types/types';
+import { RemoveBookmarkUsecase } from '../../../../domain/usecases/bookmark-usecases/remove-usecase/remove-bookmark.usecase';
+import { UpdateBookmarkUsecase } from '../../../../domain/usecases/bookmark-usecases/update-usecase/update-bookmark.usecase';
+import { GetOneBookmarkUsecase } from '../../../../domain/usecases/bookmark-usecases/get-one-usecase/get-one-bookmark.usecase';
+import { GetManyBookmarksUsecase } from '../../../../domain/usecases/bookmark-usecases/get-many-usecase/get-many-bookmarks.usecase';
+import { Result } from '../../../../core/types/types';
 import { Param } from 'src/app/core/params/param.payload';
-import { BookmarkRequest } from '../../requests/bookmark.request';
-import { CreateBookmarkUsecase } from './../../../domain/usecases/bookmark-usecases/create-bookmark.usecase';
-import { IBookmarkInteractor } from './../contracts/ibookmark.interactor';
+import { BookmarkRequest } from '../../../requests/bookmark.request';
+import { CreateBookmarkUsecase } from '../../../../domain/usecases/bookmark-usecases/create-usecase/create-bookmark.usecase';
+import { IBookmarkInteractor } from '../../contracts/ibookmark.interactor';
 import { NoParam } from 'src/app/core/params/no-param.paylod';
 
 
 @Injectable({ providedIn: 'root' })
-export class BookmarkInteractor implements IBookmarkInteractor {
+export class BookmarkInteractor extends IBookmarkInteractor {
 
     constructor(
         private createBookmarkUsecase: CreateBookmarkUsecase,
@@ -23,6 +23,7 @@ export class BookmarkInteractor implements IBookmarkInteractor {
         private updateBookmarkUsecase: UpdateBookmarkUsecase,
         private removeBookmarkUsecase: RemoveBookmarkUsecase
     ) {
+        super();
     }
 
     public save(bookmark: BookmarkRequest): Observable<Result> {
