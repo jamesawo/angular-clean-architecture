@@ -52,6 +52,7 @@ describe('PostInteractor', () => {
             expect(interactor['getOnePostUsecase']).toBeTruthy();
             expect(interactor['getManyPostUsecase']).toBeTruthy();
             expect(interactor['removePostUsecase']).toBeTruthy();
+            expect(interactor['updatePostUsecase']).toBeTruthy();
             expect(interactor['createPostUsecase']).toBeTruthy();
         });
     })

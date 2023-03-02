@@ -6,7 +6,7 @@ import { ProjectEntity } from 'src/app/domain/entities';
 
 import { ProjectRepository } from "./project.repository";
 
-const MOCK_PROJECT: ProjectEntity[] = [
+export const MOCK_PROJECT: ProjectEntity[] = [
     {
         "id": "63fcc111ae8000e232beee08",
         "title": "New Project 15",
