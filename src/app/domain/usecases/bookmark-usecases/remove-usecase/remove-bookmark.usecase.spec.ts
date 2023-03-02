@@ -5,7 +5,7 @@ import { BookmarkEntity } from "src/app/domain/entities";
 import { IBookmarkRepository } from "src/app/domain/repositories/ibookmark.repository";
 import { RemoveBookmarkUsecase } from "./remove-bookmark.usecase";
 
-fdescribe('RemoveBookmarkUsecase', () => {
+describe('RemoveBookmarkUsecase', () => {
 
     let usecase: RemoveBookmarkUsecase;
     let ibookmarkRepository: jasmine.SpyObj<IBookmarkRepository>;
