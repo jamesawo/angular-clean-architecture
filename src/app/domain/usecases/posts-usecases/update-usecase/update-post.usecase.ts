@@ -1,11 +1,11 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
-import { PostEntity } from '../../entities';
-import { Result } from '../../../core/types/types';
-import { Param } from '../../../core/params/param.payload';
-import { Usecase } from '../../../core/contracts/usecase.contract';
-import { IPostRepository } from '../../repositories/ipost.repository';
+import { PostEntity } from '../../../entities';
+import { Result } from '../../../../core/types/types';
+import { Param } from '../../../../core/params/param.payload';
+import { Usecase } from '../../../../core/contracts/usecase.contract';
+import { IPostRepository } from '../../../repositories/ipost.repository';
 
 
 @Injectable({ providedIn: 'root' })

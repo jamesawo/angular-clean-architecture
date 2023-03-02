@@ -1,10 +1,10 @@
 import { PostRequest } from 'src/app/data/requests/posts.request';
 import { PostInteractor } from './post.interactor';
-import { CreatePostUsecase } from "src/app/domain/usecases/posts-usecases/create-post.usecase";
-import { GetManyPostUsecase } from "src/app/domain/usecases/posts-usecases/get-many-posts.usecase";
-import { GetOnePostUsecase } from "src/app/domain/usecases/posts-usecases/get-one-post.usecase";
-import { RemovePostUsecase } from "src/app/domain/usecases/posts-usecases/remove-post.usecase";
-import { UpdatePostUsecase } from "src/app/domain/usecases/posts-usecases/update-post.usecase";
+import { CreatePostUsecase } from "src/app/domain/usecases/posts-usecases/create-usecase/create-post.usecase";
+import { GetManyPostUsecase } from "src/app/domain/usecases/posts-usecases/get-many-usecase/get-many-posts.usecase";
+import { GetOnePostUsecase } from "src/app/domain/usecases/posts-usecases/get-one-usecase/get-one-post.usecase";
+import { RemovePostUsecase } from "src/app/domain/usecases/posts-usecases/remove-usecase/remove-post.usecase";
+import { UpdatePostUsecase } from "src/app/domain/usecases/posts-usecases/update-usecase/update-post.usecase";
 import { MOCK_POSTS } from 'src/app/data/datasources/remote/repo-implementations/post/post.repository.spec';
 import { IPostInteractor } from '../../contracts/ipost.interactor';
 import { Observable, of } from 'rxjs';

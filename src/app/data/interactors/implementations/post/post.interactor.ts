@@ -6,11 +6,11 @@ import { IPostInteractor } from '../../contracts/ipost.interactor';
 import { PostRequest } from '../../../requests/posts.request';
 import { Param } from 'src/app/core/params/param.payload';
 import { NoParam } from 'src/app/core/params/no-param.paylod';
-import { CreatePostUsecase } from '../../../../domain/usecases/posts-usecases/create-post.usecase';
-import { UpdatePostUsecase } from '../../../../domain/usecases/posts-usecases/update-post.usecase';
-import { RemovePostUsecase } from '../../../../domain/usecases/posts-usecases/remove-post.usecase';
-import { GetManyPostUsecase } from '../../../../domain/usecases/posts-usecases/get-many-posts.usecase';
-import { GetOnePostUsecase } from '../../../../domain/usecases/posts-usecases/get-one-post.usecase';
+import { CreatePostUsecase } from '../../../../domain/usecases/posts-usecases/create-usecase/create-post.usecase';
+import { UpdatePostUsecase } from '../../../../domain/usecases/posts-usecases/update-usecase/update-post.usecase';
+import { RemovePostUsecase } from '../../../../domain/usecases/posts-usecases/remove-usecase/remove-post.usecase';
+import { GetManyPostUsecase } from '../../../../domain/usecases/posts-usecases/get-many-usecase/get-many-posts.usecase';
+import { GetOnePostUsecase } from '../../../../domain/usecases/posts-usecases/get-one-usecase/get-one-post.usecase';
 
 
 @Injectable({ providedIn: 'root' })
