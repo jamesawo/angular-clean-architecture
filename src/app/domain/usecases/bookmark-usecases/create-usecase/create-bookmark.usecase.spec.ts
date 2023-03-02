@@ -2,7 +2,7 @@ import { IBookmarkRepository } from "src/app/domain/repositories/ibookmark.repos
 import { CreateBookmarkUsecase } from "./create-bookmark.usecase";
 
 
-fdescribe('CreateBookmarkUsecase', () => {
+describe('CreateBookmarkUsecase', () => {
     let usecase: CreateBookmarkUsecase;
     let ibookmarkRepository: jasmine.SpyObj<IBookmarkRepository>;
 

@@ -10,7 +10,7 @@ import { BookmarkRequest } from './../../../../requests/bookmark.request';
 
 import { BookmarkRepository } from "./bookmark.repository";
 
-const MOCK_BOOKMARKS: BookmarkEntity[] = [
+export const MOCK_BOOKMARKS: BookmarkEntity[] = [
 
     {
         "id": "63fcc537a22452cf36fe85bd",
