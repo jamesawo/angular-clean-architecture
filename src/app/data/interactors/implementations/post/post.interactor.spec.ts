@@ -11,7 +11,7 @@ import { Observable, of } from 'rxjs';
 import { Param } from 'src/app/core/params/param.payload';
 import { NoParam } from 'src/app/core/params/no-param.paylod';
 
-fdescribe('PostInteractor', () => {
+describe('PostInteractor', () => {
 
     let interactor: PostInteractor;
     let getOnePostUsecase: jasmine.SpyObj<GetOnePostUsecase>;
