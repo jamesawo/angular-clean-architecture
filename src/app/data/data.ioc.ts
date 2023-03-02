@@ -1,15 +1,20 @@
-import { GetOneBookmarkUsecase } from './../domain/usecases/bookmark-usecases/get-one-bookmark.usecase';
-import { RemoveBookmarkUsecase } from './../domain/usecases/bookmark-usecases/remove-bookmark.usecase';
-import { UpdateBookmarkUsecase } from './../domain/usecases/bookmark-usecases/update-bookmark.usecase';
+import { ProjectInteractor } from './interactors/implementations/project/project.interactor';
+import { IProjectInteractor } from 'src/app/data/interactors/contracts/iproject.interactor';
+import { PostInteractor } from './interactors/implementations/post/post.interactor';
+import { IPostInteractor } from 'src/app/data/interactors/contracts/ipost.interactor';
+import { IBookmarkInteractor } from 'src/app/data/interactors/contracts/ibookmark.interactor';
+import { GetOneBookmarkUsecase } from '../domain/usecases/bookmark-usecases/get-one-usecase/get-one-bookmark.usecase';
+import { RemoveBookmarkUsecase } from '../domain/usecases/bookmark-usecases/remove-usecase/remove-bookmark.usecase';
+import { UpdateBookmarkUsecase } from '../domain/usecases/bookmark-usecases/update-usecase/update-bookmark.usecase';
 import { HttpClient } from '@angular/common/http';
 import { Provider } from "@angular/core";
 import { GetManyPostUsecase } from './../domain/usecases/posts-usecases/get-many-posts.usecase';
 import { GetOnePostUsecase } from './../domain/usecases/posts-usecases/get-one-post.usecase';
 import { RemovePostUsecase } from './../domain/usecases/posts-usecases/remove-post.usecase';
 import { UpdatePostUsecase } from './../domain/usecases/posts-usecases/update-post.usecase';
-import { GetManyBookmarksUsecase } from './../domain/usecases/bookmark-usecases/get-many-bookmarks.usecase';
+import { GetManyBookmarksUsecase } from '../domain/usecases/bookmark-usecases/get-many-usecase/get-many-bookmarks.usecase';
 import { DataBookmarkFactory, DataPostFactory, DataProjectFactory } from './data.factory';
-import { CreateBookmarkUsecase } from "../domain/usecases/bookmark-usecases/create-bookmark.usecase";
+import { CreateBookmarkUsecase } from "../domain/usecases/bookmark-usecases/create-usecase/create-bookmark.usecase";
 import { BookmarkRepository } from './datasources/remote/repo-implementations/bookmark/bookmark.repository';
 import { PostRepository } from './datasources/remote/repo-implementations/post/post.repository';
 import { CreatePostUsecase } from '../domain/usecases/posts-usecases/create-post.usecase';
@@ -19,12 +24,17 @@ import { GetManyProjectUsecase } from '../domain/usecases/projects-usecases/get-
 import { UpdateProjectUsecase } from '../domain/usecases/projects-usecases/update-project.usecase';
 import { RemoveProjectUsecase } from '../domain/usecases/projects-usecases/remove-project.usecase';
 import { GetOneProjectUsecase } from '../domain/usecases/projects-usecases/get-one-project.usecase';
+import { BookmarkInteractor } from './interactors/implementations/bookmark/bookmark.interactor';
 
 const bookmarkDataFactory = new DataBookmarkFactory();
 const postDataFactory = new DataPostFactory();
 const projectDataFactory = new DataProjectFactory()
 
 export const DATA_BOOKMARK_IOC: Provider[] = [
+    {
+        provide: IBookmarkInteractor,
+        useClass: BookmarkInteractor
+    },
     {
         deps: [HttpClient],
         provide: BookmarkRepository,
@@ -65,6 +75,10 @@ export const DATA_BOOKMARK_IOC: Provider[] = [
 
 export const DATA_POST_IOC: Provider[] = [
     {
+        provide: IPostInteractor,
+        useClass: PostInteractor
+    },
+    {
         deps: [HttpClient],
         provide: PostRepository,
         useFactory: (http: HttpClient) => postDataFactory.getRepository(http)
@@ -102,6 +116,10 @@ export const DATA_POST_IOC: Provider[] = [
 ];
 
 export const DATA_PROJECT_IOC: Provider[] = [
+    {
+        provide: IProjectInteractor,
+        useClass: ProjectInteractor
+    },
     {
         deps: [HttpClient],
         provide: ProjectRepository,

@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Result } from './../../../core/types/types';
 import { BookmarkRequest } from 'src/app/data/requests/bookmark.request';
-import { BookmarkInteractor } from '../implementations/bookmark.interactor';
 
 
-@Injectable({ providedIn: 'root', useClass: BookmarkInteractor }) // default implementation
+
+@Injectable({ providedIn: 'root' })
 export abstract class IBookmarkInteractor {
 
     abstract save(bookmark: BookmarkRequest): Observable<Result>;

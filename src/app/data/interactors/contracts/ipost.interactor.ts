@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Result } from './../../../core/types/types';
-import { PostInteractor } from '../implementations/post.interactor';
+import { PostInteractor } from '../implementations/post/post.interactor';
 import { PostRequest } from '../../requests/posts.request';
 
 
-@Injectable({ providedIn: 'root', useClass: PostInteractor }) // default implementation
+@Injectable({ providedIn: 'root' })
 export abstract class IPostInteractor {
 
     abstract getMany(): Observable<PostRequest[]>;

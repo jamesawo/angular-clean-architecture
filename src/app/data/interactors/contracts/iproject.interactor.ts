@@ -3,10 +3,10 @@ import { Observable } from 'rxjs';
 
 import { Result } from '../../../core/types/types';
 import { ProjectRequest } from '../../requests/project.request';
-import { ProjectInteractor } from '../implementations/project.interactor';
 
 
-@Injectable({ providedIn: 'root', useClass: ProjectInteractor }) // default implementation
+
+@Injectable({ providedIn: 'root', })
 export abstract class IProjectInteractor {
 
     abstract save(project: ProjectRequest): Observable<Result>;
