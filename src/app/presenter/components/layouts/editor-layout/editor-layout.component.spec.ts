@@ -7,7 +7,7 @@ import { LinkComponent } from './../../shared/link/link.component';
 
 import { EditorLayoutComponent } from './editor-layout.component';
 
-fdescribe('EditorLayoutComponent', () => {
+describe('EditorLayoutComponent', () => {
     let component: EditorLayoutComponent;
     let fixture: ComponentFixture<EditorLayoutComponent>;
 
