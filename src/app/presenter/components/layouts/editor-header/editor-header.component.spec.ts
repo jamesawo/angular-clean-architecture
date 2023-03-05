@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { LinkComponent } from './../../shared/link/link.component';
 
 import { EditorHeaderComponent } from './editor-header.component';
-fdescribe('EditorHeaderComponent', () => {
+describe('EditorHeaderComponent', () => {
     let fixture: ComponentFixture<EditorHeaderComponent>;
     let component: EditorHeaderComponent;
 
@@ -21,9 +21,6 @@ fdescribe('EditorHeaderComponent', () => {
         fixture = TestBed.createComponent(EditorHeaderComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
-
-
-
     });
 
     it('should create', () => {
@@ -31,7 +28,6 @@ fdescribe('EditorHeaderComponent', () => {
     })
 
     it('should have 3 LinkComponents', () => {
-
         const { debugElement } = fixture;
 
         const linkComponents = debugElement.queryAll(By.directive(LinkComponent));
