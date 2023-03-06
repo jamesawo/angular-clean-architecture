@@ -1,11 +1,11 @@
-import { ThemeSwitcherService } from './theme-switcher.service';
 import { Component, OnInit } from '@angular/core';
+
+import { ThemeSwitcherService } from './theme-switcher.service';
 
 @Component({
     selector: 'app-theme-switcher',
     templateUrl: './theme-switcher.component.html',
-    styles: [
-    ]
+    styles: []
 })
 export class ThemeSwitcherComponent implements OnInit {
 
