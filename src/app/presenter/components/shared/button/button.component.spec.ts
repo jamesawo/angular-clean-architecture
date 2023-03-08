@@ -20,4 +20,43 @@ describe('ButtonComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    describe('props', () => {
+        let props: {
+            text?: string,
+            type?: string,
+            loading?: boolean,
+        }
+        beforeEach(() => {
+            props = {
+                text: 'Fake Button',
+                type: 'button',
+                loading: false,
+            };
+        })
+
+        it('should accept ButtonProps as input', () => {
+
+            component.props = props;
+
+            expect(component.props).toBeTruthy();
+
+            expect(component.props).toEqual(props);
+
+        })
+    })
+
+    describe('action', () => {
+
+        let action: () => void;
+
+        beforeEach(() => {
+            action = () => { }
+            component.action = action;
+        })
+
+        it('should accept a ButtonAction as input', () => {
+            expect(component.action).toEqual(action);
+        })
+    })
 });
