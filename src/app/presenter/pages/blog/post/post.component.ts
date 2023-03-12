@@ -1,11 +1,10 @@
-import { PostRequest } from './../../../../data/requests/posts.request';
 import { Component, Input } from '@angular/core';
+
+import { PostRequest } from './../../../../data/requests/posts.request';
 
 @Component({
     selector: 'app-post',
     templateUrl: './post.component.html',
-    styles: [
-    ]
 })
 export class PostComponent {
 
