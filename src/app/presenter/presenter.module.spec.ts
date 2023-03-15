@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { PresenterModule } from './presenter.module';
 
-fdescribe('PresenterModule', () => {
+describe('PresenterModule', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [PresenterModule]
