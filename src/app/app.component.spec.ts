@@ -16,7 +16,7 @@ import { LightThemeSwitchComponent } from './presenter/components/shared/theme-s
 
 const MOCK_THEME_PREF = of('light');
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
 
     let component: AppComponent;
     let themeService: jasmine.SpyObj<ThemeSwitcherService>;
