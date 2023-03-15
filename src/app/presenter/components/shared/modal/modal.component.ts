@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { ModalService } from './modal.service';
 
 @Component({
@@ -6,17 +7,17 @@ import { ModalService } from './modal.service';
     templateUrl: './modal.component.html',
     styles: [
         `
-			section {
-			visibility: hidden;
-			opacity: 0;
-			transition: opacity 250ms ease-in;
-		}
-		section.open {
-			visibility: inherit;
-			opacity: 1;
-		}
-		`
-    ]
+            section {
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity 250ms ease-in;
+            }
+            section.open {
+                visibility: inherit;
+                opacity: 1;
+            }
+        `,
+    ],
 })
 export class ModalComponent<T> {
     public display = true;
@@ -26,10 +27,8 @@ export class ModalComponent<T> {
         this.title = service.title!;
     }
 
-    public close = async () => {
+    public close = () => {
         this.display = false;
-        setTimeout(async () => {
-            await this.service.close()
-        }, 1000)
-    }
+        this.service.close();
+    };
 }
