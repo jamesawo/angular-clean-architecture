@@ -28,7 +28,7 @@ describe('AppComponent', () => {
         themeService = jasmine.createSpyObj('ThemeSwitcherService', [], { pref$: MOCK_THEME_PREF });
         seoService = jasmine.createSpyObj('PageSeoService', ['setSEO']);
 
-        TestBed.configureTestingModule({
+        await TestBed.configureTestingModule({
             declarations: [
                 HeaderComponent,
                 FooterComponent,
