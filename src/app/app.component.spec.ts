@@ -1,6 +1,6 @@
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { Title, Meta } from '@angular/platform-browser';
+import { Title, Meta, By } from '@angular/platform-browser';
 
 import { of } from 'rxjs';
 
@@ -89,6 +89,26 @@ describe('AppComponent', () => {
             expect(seoService.setSEO).toHaveBeenCalled();
             expect(title.getTitle()).toContain("Welcome to my Personal");
         });
+    });
+
+    describe('component html', () => {
+
+        it('should have header component present', () => {
+            const { debugElement } = fixture;
+
+            const headerComponent = debugElement.queryAll(By.directive(HeaderComponent));
+
+            expect(headerComponent.length).toBeGreaterThan(0);
+        });
+
+        it('should have footer component present', () => {
+            const { debugElement } = fixture;
+
+            const footerComponent = debugElement.queryAll(By.directive(FooterComponent));
+
+            expect(footerComponent.length).toBeGreaterThan(0);
+        });
+
     });
 
 
