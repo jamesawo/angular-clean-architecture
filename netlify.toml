@@ -3,7 +3,7 @@
 base = "./"
 publish = "./dist/angular-clean-architecture-serverless/"
 command = "ng build"
-edge_functions = "/netlify/functions/"
+# edge_functions = "/netlify/functions/"
 
 # [[redirects]]
 # from = "/*"
@@ -11,5 +11,5 @@ edge_functions = "/netlify/functions/"
 # status = 200
 
 [functions]
-directory = "./netlify/functions"
+directory = "/netlify/functions/"
 external_node_modules = ["mongodb", "netlify"]
