@@ -1,7 +1,6 @@
 # Angular Clean Architecture with Serverless Functions
 
-Note: I am using this project to experiment with different architectural concepts.  This is my attempt at implementing Robert C. Martin (Uncle Bob) Clean Architecture guidelines in an Angular project that uses serverless functions to communicate with a MongoDB cluster.
-
+Note: I am using this project to experiment with different architectural concepts. This is my attempt at implementing Robert C. Martin (Uncle Bob) Clean Architecture guidelines in an Angular project that uses serverless functions to communicate with a MongoDB cluster.
 
 ## Why?
 
@@ -12,20 +11,20 @@ Serverless functions allow for cost-effective, scalable, and event-driven execut
 3.  Poor scalability, as the codebase grows and becomes more complex over time.
 4.  Difficulty in adapting to changing requirements, as the codebase becomes harder to modify.
 5.  Lack of maintainability, as the codebase becomes harder to understand and debug.
-6. Developer productivity decreases, as they struggle with complex and poorly organized code.
+6.  Developer productivity decreases, as they struggle with complex and poorly organized code.
 
 To learn how to prevent these concerns mentioned above, I am using Clean Architecture Design Pattern as an architectural style that provides some set of guidelines for the project. This is my own way of interpreting The Clean Architecture Design Pattern in a Serverless Angular Blog Website.
 
-Read More on clean architecture:  [Uncle Bob Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+Read More on clean architecture: [Uncle Bob Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 
 ## Technologies
 
-- Angular CLI
-- Angular 
-- Netlify Edge Functions
-- MongoDB
-- Typescript
-- Netlify CLI
+-   Angular CLI
+-   Angular
+-   Netlify Edge Functions
+-   MongoDB
+-   Typescript
+-   Netlify CLI
 
 ## Layers of this project
 
@@ -45,16 +44,14 @@ Data is the layer that supports and directly utilizes the domain layer. Here we 
 
 This is the layer where you write your UI code.
 
-
 ## How to use
 
 You can read [this article](https://jamesaworo.com/#) explaining my idea of how this code can be used.
 A typical programming workflow for a new feature would look like this:
 
--  You start in the domain layer and write the entities, use cases, and repositories.
--  You set up the data layer that should implement the contracts  in the domain layer
--  You write the UI codes in the presentation layer.
-
+-   You start in the domain layer and write the entities, use cases, and repositories.
+-   You set up the data layer that should implement the contracts in the domain layer
+-   You write the UI codes in the presentation layer.
 
 ## Development server
 
@@ -65,15 +62,13 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The ap
 All the functions used in this project can be found in `netlify/functions` directory
 To learn more, check out this [Blog Post From Netlify](https://www.netlify.com/blog/2021/12/11/serverless-functions-made-simple-just-add-files/)
 
-
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io/).
 
-
 ## Support
 
-Give this project a star if you like or find it useful.
+Give this project a star if you like it or find it useful.
 
 ## License
 
