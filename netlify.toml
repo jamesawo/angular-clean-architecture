@@ -3,6 +3,7 @@
 base = "./"
 publish = "./dist/angular-clean-architecture-serverless/"
 command = "ng build"
+edge_functions = "/netlify/functions/"
 
 # [[redirects]]
 # from = "/*"
