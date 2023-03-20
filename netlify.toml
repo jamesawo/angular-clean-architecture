@@ -12,4 +12,4 @@ edge_functions = "/netlify/functions/"
 
 [functions]
 directory = "./netlify/functions"
-external_node_modules = ["mongodb"]
+external_node_modules = ["mongodb", "netlify"]

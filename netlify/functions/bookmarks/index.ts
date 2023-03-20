@@ -28,22 +28,20 @@ const handler: Handler = async (event, context) => {
             default:
                 return {
                     statusCode: 405,
-                    body: JSON.stringify({ message: 'Method not supported' })
-                }
+                    body: JSON.stringify({ message: 'Method not supported' }),
+                };
         }
 
         return {
             statusCode: 200,
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
         };
-
     } catch (err: any) {
-
         return {
             statusCode: 500,
-            body: JSON.stringify({ message: err.toString() })
-        }
+            body: JSON.stringify({ message: err.toString() }),
+        };
     }
-}
+};
 
 export { handler };
