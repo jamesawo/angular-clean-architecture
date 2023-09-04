@@ -1,64 +1,97 @@
 <section id="intro" class="relative mt-28">
+	<div class="text-black dark:text-white" aria-label="Introduction">
+		<h1 class="mt-0 mb-2 text-5xl font-bold">👋🏾</h1>
+		<h1 class="mt-0 mb-2 text-4xl font-bold">I'm James</h1>
+		<p class="mt-0 mb-0 text-2xl">Fullstack software engineer</p>
+	</div>
 
-    <div class="text-black dark:text-white">
-        <h1 class="mt-0 mb-2 text-5xl font-bold">👋🏾</h1>
-        <h1 class="mt-0 mb-2 text-4xl font-bold ">I'm James</h1>
-        <p class="mt-0 mb-0 text-2xl ">Fullstack software engineer.</p>
-    </div>
-
-    <img src="assets/img/jamie.png" class="w-3/4 absolute -right-20 mt-10 md:w-2/4 md:right-0" alt="JamieScotter">
-
+	<img
+		src="assets/img/jamie.png"
+		class="w-3/4 absolute -right-20 mt-10 md:w-2/4 md:right-0"
+		alt="A funny image of james on a scooter" />
 </section>
 
-<section id="links" class="flex flex-col mt-10 ">
+<section id="links" class="flex flex-col mt-10">
+	<div class="sm:w-max flex-3 text-black dark:text-white">
+		<div class="flex flex-col">
+			<p class="font-normal font-mono">Welcome to my space on the web</p>
+			<ul class="list-disc list-inside mt-1">
+				<li>
+					<a
+						href="https://blog.jamesaworo.com/"
+						target="_blank"
+						class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500"
+						ariaCurrentWhenActive="page"
+						routerLinkActive=""
+						[routerLinkActiveOptions]="{ exact: true }">
+						blog
+					</a>
+				</li>
 
-    <div class="sm:w-max flex-3 text-black dark:text-white">
-        <div class="flex flex-col">
-            <p class="font-normal font-mono ">Welcome to my space on the web</p>
-            <ul class="list-disc list-inside mt-1">
-                <li>
-                    <a routerLink="/blog"
-                        class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500 "
-                        ariaCurrentWhenActive="page" routerLinkActive="" [routerLinkActiveOptions]="{exact: true}">
-                        blog
-                    </a>
-                </li>
+				<li>
+					<a
+						routerLink="/projects"
+						class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500"
+						ariaCurrentWhenActive="page"
+						routerLinkActive=""
+						[routerLinkActiveOptions]="{ exact: true }">
+						projects
+					</a>
+				</li>
 
-                <li>
-                    <a routerLink="/projects"
-                        class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500 "
-                        ariaCurrentWhenActive="page" routerLinkActive="" [routerLinkActiveOptions]="{exact: true}">
-                        projects
-                    </a>
-                <li>
-                    <a routerLink="/bookmarks"
-                        class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500 "
-                        ariaCurrentWhenActive="page" routerLinkActive="" [routerLinkActiveOptions]="{exact: true}">
-                        bookmarks
-                    </a>
-                </li>
-            </ul>
-        </div>
+				<li>
+					<a
+						routerLink="/bookmarks"
+						class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500"
+						ariaCurrentWhenActive="page"
+						routerLinkActive=""
+						[routerLinkActiveOptions]="{ exact: true }">
+						bookmarks
+					</a>
+				</li>
+			</ul>
+		</div>
 
-        <div class="flex flex-col mt-5  text-black dark:text-white">
-            <p class="font-normal font-mono">Find me on the internet</p>
-            <ul class="list-disc list-inside mt-1">
-                <li><a href="https://github.com/jamesawo" target="_blank"
-                        class="hover:text-pink-600 font-mono cursor-pointer">github</a></li>
-                <li><a href="https://www.linkedin.com/feed/" target="_blank"
-                        class="hover:text-pink-600 font-mono cursor-pointer">linkedIn</a></li>
-            </ul>
-        </div>
+		<div class="flex flex-col mt-5 text-black dark:text-white">
+			<p class="font-normal font-mono">Find me on the internet</p>
+			<ul class="list-disc list-inside mt-1">
+				<li>
+					<a
+						href="https://github.com/jamesawo"
+						target="_blank"
+						class="hover:text-pink-600 font-mono cursor-pointer"
+						>github</a
+					>
+				</li>
+				<li>
+					<a
+						href="https://www.linkedin.com/feed/"
+						target="_blank"
+						class="hover:text-pink-600 font-mono cursor-pointer"
+						>linkedIn</a
+					>
+				</li>
+			</ul>
+		</div>
 
-        <div class="flex flex-col mt-5 text-black dark:text-white">
-            <p class="font-normal font-mono">Contact me </p>
-            <ul class="list-disc list-inside mt-1">
-                <li><a href="mailto:james.aworo@outlook.com" class="hover:text-pink-600 font-mono">email
-                        (james.aworo@outlook.com)</a></li>
-                <li><a href="skype:jayson1o1?chat" class="hover:text-pink-600 font-mono">skype</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
+		<div class="flex flex-col mt-5 text-black dark:text-white">
+			<p class="font-normal font-mono">Contact me</p>
+			<ul class="list-disc list-inside mt-1">
+				<li>
+					<a
+						href="mailto:james.aworo@outlook.com"
+						class="hover:text-pink-600 font-mono"
+						>email (james.aworo@outlook.com)</a
+					>
+				</li>
+				<li>
+					<a
+						href="skype:jayson1o1?chat"
+						class="hover:text-pink-600 font-mono"
+						>skype</a
+					>
+				</li>
+			</ul>
+		</div>
+	</div>
 </section>

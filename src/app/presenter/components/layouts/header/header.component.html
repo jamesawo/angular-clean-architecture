@@ -1,33 +1,42 @@
 <section id="header" class="my-10 mx-0">
-    <nav class="flex flex-row justify-between">
-        <a class="text-lg font-bold dark:text-white dark:hover:text-pink-600 text-black hover:text-pink-600 font-mono"
-            routerLink="/" routerLinkActive="text-pink-600 dark:text-pink-600" [routerLinkActiveOptions]="{exact: true}"
-            ariaCurrentWhenActive="page">
-            James.
-        </a>
+	<nav class="flex flex-row justify-between">
+		<a
+			class="text-lg font-bold dark:text-white dark:hover:text-pink-600 text-black hover:text-pink-600 font-mono"
+			routerLink="/"
+			routerLinkActive="text-pink-600 dark:text-pink-600"
+			[routerLinkActiveOptions]="{ exact: true }"
+			ariaCurrentWhenActive="page">
+			James.
+		</a>
 
-        <div class="flex space-x-6">
+		<div class="flex space-x-6">
+			<a
+				ariaCurrentWhenActive="page"
+				class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500 font-mono"
+				routerLinkActive="text-pink-600 dark:text-pink-600"
+				[routerLinkActiveOptions]="{ exact: true }"
+				href="https://blog.jamesaworo.com/"
+				target="_blank">
+				blog
+			</a>
 
-            <a ariaCurrentWhenActive="page"
-                class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500 font-mono"
-                routerLinkActive="text-pink-600 dark:text-pink-600" [routerLinkActiveOptions]="{exact: true}"
-                routerLink="/blog">
-                blog
-            </a>
-
-            <a routerLink="/projects"
-                class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500 font-mono"
-                ariaCurrentWhenActive="page" routerLinkActive="text-pink-600 dark:text-pink-600"
-                [routerLinkActiveOptions]="{exact: true}">
-                projects
-            </a>
-            <a routerLink="/bookmarks"
-                class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500 font-mono"
-                ariaCurrentWhenActive="page" routerLinkActive="text-pink-600 dark:text-pink-600"
-                [routerLinkActiveOptions]="{exact: true}">
-                bookmarks
-            </a>
-        </div>
-        <app-theme-switcher></app-theme-switcher>
-    </nav>
+			<a
+				routerLink="/projects"
+				class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500 font-mono"
+				ariaCurrentWhenActive="page"
+				routerLinkActive="text-pink-600 dark:text-pink-600"
+				[routerLinkActiveOptions]="{ exact: true }">
+				projects
+			</a>
+			<a
+				routerLink="/bookmarks"
+				class="dark:hover:text-pink-600 text-black dark:text-white text-base hover:text-pink-500 font-mono"
+				ariaCurrentWhenActive="page"
+				routerLinkActive="text-pink-600 dark:text-pink-600"
+				[routerLinkActiveOptions]="{ exact: true }">
+				bookmarks
+			</a>
+		</div>
+		<app-theme-switcher></app-theme-switcher>
+	</nav>
 </section>
