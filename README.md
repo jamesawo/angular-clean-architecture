@@ -15,7 +15,7 @@ Serverless functions allow for cost-effective, scalable, and event-driven execut
 
 To learn how to prevent these concerns mentioned above, I am using Clean Architecture Design Pattern as an architectural style that provides some set of guidelines for the project. This is my own way of interpreting The Clean Architecture Design Pattern in a Serverless Angular Blog Website.
 
-Read More on clean architecture: [Uncle Bob Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+Read More on clean architecture: [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 
 ## Technologies
 
